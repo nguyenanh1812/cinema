@@ -1,0 +1,132 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+.footer-content{
+    margin-top: 40px;
+}
+.footer-brand-slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    margin-bottom: 20px;
+}
+.list-brand-film{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: var(--width);
+}
+.list-brand-film li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-brand-film a{
+    display: inline-block;
+}
+#brand-1{
+    background: url(assets/brand-type-film-footer.png) -18px -6px;
+    width: 65px;
+    height: 32px;
+}
+#brand-2{
+    background: url(assets/brand-type-film-footer.png) -708px -13px; 
+    width: 85px;
+    height: 20px;
+}
+#brand-3{
+    background: url(assets/brand-type-film-footer.png) -981px -9px; 
+    width: 76px;
+    height: 29px;
+}
+#brand-4{
+    background: url(assets/brand-type-film-footer.png) -567px -10px; 
+    width: 98px;
+    height: 28px;
+}
+#brand-5{
+    background: url(assets/brand-type-film-footer.png) -1111px -10px; 
+    width: 112px;
+    height: 27px;
+}
+#brand-6{
+    background: url(assets/brand-type-film-footer.png) -133px -6px;
+    width: 101px;
+    height: 29px;
+}
+#brand-7{
+    background: url(assets/brand-type-film-footer.png) -1275px -11px; 
+    width: 57px;
+    height: 26px;
+}
+#brand-8{
+    background: url(assets/brand-type-film-footer.png) -1362px -4px; 
+    width: 115px;
+    height: 43px;
+}
+.footer-main{
+    display: flex;
+    justify-content: center;
+}
+.footer-main-content{
+    display: flex;
+    justify-content: space-between;
+    width: var(--width);
+    font-size: 90%;
+    color: rgb(90, 90, 90);
+}
+.footer-main-content h3{
+    margin-bottom: 7px;
+}
+.footer-main-content ul{
+    list-style: none;
+}
+.footer-main-content a{
+    text-decoration: none;
+    color: rgb(90, 90, 90);    
+    font-size: 110%;
+    word-spacing: 1px;
+}
+.icon-follow ul li{
+    display: inline;
+}
+#fb{
+    display: inline-block;
+    background: url(https://png.pngtree.com/element_our/png/20181011/facebook-social-media-icon-design-template-vector-png_126986.jpg); 
+    width: 43px;
+    height: 43px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#youtube{
+    display: inline-block;
+    background: url(https://banner2.cleanpng.com/20190731/ejc/kisspng-youtube-kids-logo-transparency-design-icgeb-cookies-and-privacy-5d41215eaee2c4.0324722015645494707163.jpg); 
+    background-size: cover;
+    width: 43px;
+    height: 43px;
+}
+#insta{
+    display: inline-block;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png);
+    width: 43px;
+    height: 43px;
+    background-size: cover;
+}
+#zalo{
+    display: inline-block;
+    background: url(https://alofone.vn/wp-content/uploads/2019/06/zalo-logo.png) ;
+    width: 43px;
+    height: 43px;
+    background-size: cover;
+}
+.zoom-icon:hover{
+    transition: 0.2s;
+    transform: scale(1.4);
+}
+.customer-cgv{
+    width: 274px;
+}
