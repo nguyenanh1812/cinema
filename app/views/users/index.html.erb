@@ -1,0 +1,11 @@
+<title>Users</title>
+
+<h1>All users</h1>
+
+<%= pagy_bootstrap_nav(@pagy).html_safe %>
+<ul class="users">
+<% @users.each do |user| %>
+  <%= render user %>
+<% end %>
+</ul>
+<%= pagy_bootstrap_nav(@pagy).html_safe %>

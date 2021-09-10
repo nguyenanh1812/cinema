@@ -246,3 +246,85 @@
     height: 130px;
 }
 
+//login-signup
+.r-login{
+    //float: left;
+    width: 54%;
+    margin: 0 auto;
+}
+
+.r-login #form-register-content a,.r-login #form-login-content a{
+    color:#ddd;
+    padding: 18px 18px 10px;
+}
+.r-login input[type=text],.r-login input[type=password]{
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.r-login  select {
+  width: 100%;
+  padding: 5px 5px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.r-login  label[for=r-birthday]{
+    display:block;
+}
+ .r-login  select.r-bday,.r-login  select.r-bmonth,.r-login  select.r-byear{
+    width: 20%;
+ }
+
+.r-login input[type=submit], .form-register-content input[type=button] {
+  width: 100%;
+  background-color: #e71a0f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.r-login label {
+    display: block;
+}
+.cgv-login-register-form {
+    max-width:100%;
+    padding:0;
+    background:#fdfcf0;
+    z-index: 99999;
+} 
+.cgv-login-register-form h2{
+    background-color: #e71a0f;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 20px 20px 10px;
+    text-align: left;
+}
+.r-login h2 span{
+    color:#ddd;
+    cursor: pointer;
+    margin: 0 20px;
+    padding: 20px 15px 8px;
+    text-transform: uppercase;
+}
+.r-login h2 span.active{
+    border-bottom: 3px solid #fff;
+    color:#fff;
+}
+.r-login h2 span:hover{
+    color: #fff;
+}
+.r-login label.gender-title{
+  margin: 4px 0 12px;
+  display: inline-block;
+}

@@ -1,0 +1,22 @@
+
+<div class="cgv-login-register-form">
+    <div class="r-login">
+    <h2><span id="form-login-content" class="active">Đăng nhập</span><span id="form-register-content">
+    <%= link_to "Đăng ký", new_user_path %></li></span></h2>
+        <%= form_for(:session, url: login_path) do |f| %>
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+            <br>
+            <%= f.label :mật_khẩu %>
+            <%= f.password_field :password, class: 'form-control' %>
+            
+            
+            <%= f.label :remember_me, class: "checkbox inline" do %>
+                <%= f.check_box :remember_me %>
+                <span>Remember me on this computer</span>
+            <% end %>
+               
+            <%= f.submit "Log in", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @user.name %></h1>
+    <p>
+      Sample mail sent using smtp.
+    </p>
+    <p>
+    Welcome to CGV! Click on the link below to activate your account:
+    </p>
+    <%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
+  </body>
+</html>
