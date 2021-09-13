@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_10_052206) do
+ActiveRecord::Schema.define(version: 2021_09_13_092248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2021_09_10_052206) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
+    t.integer "phonenum"
+    t.string "city"
+    t.string "favorite_cinema"
+    t.integer "day"
+    t.integer "month"
+    t.integer "year"
+    t.boolean "sex"
   end
 
 end

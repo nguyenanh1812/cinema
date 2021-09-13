@@ -6,7 +6,7 @@
             <li><a href="#">Vé Của Tôi </li>
             
             <% if logged_in? %>
-				<li><%= link_to "Users", users_path %></li>
+				<!--<li><%= link_to "Users", users_path %></li>-->
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <li><%= link_to "Log out", logout_path, method: :delete %></li>
@@ -21,7 +21,7 @@
         <div class="menu-header">
             <ul class="parent">
                  <li>
-                   <a href="#" class="logo"><img src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png"></a>
+                   <a href="/" class="logo"><img src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png"></a>
                 </li>
                 <li style= "margin-top: 40px;">
                     <div class="dropdown">

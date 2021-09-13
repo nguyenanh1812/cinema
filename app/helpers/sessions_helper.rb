@@ -12,7 +12,7 @@ module SessionsHelper
         cookies.permanent[:remember_token] = user.remember_token
     end
 
-        # Trả về người dùng đã đăng nhập hiện tại (nếu có).
+    # Trả về người dùng đã đăng nhập hiện tại (nếu có).
     def current_user
         #if session[:user_id]
         #   @current_user ||= User.find_by(id: session[:user_id])
@@ -62,8 +62,4 @@ module SessionsHelper
         session[:forwarding_url] = request.original_url if request.get?
     end
 
-    #def log_out
-     #   session.delete(:user_id)
-     #   @current_user = nil
-   # end
 end

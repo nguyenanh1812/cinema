@@ -1,4 +1,4 @@
-<title>Show User</title>
+<title><%= @user.name %></title>
  
 <p>
   <strong>Name:</strong>
@@ -10,5 +10,26 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Phone Number:</strong>
+  <%= @user.phonenum %>
+</p>
+<p><strong> City:</strong>
+<%= @user.city%>
+</p>
+<p>
+  <strong>Favorite Cinema:</strong>
+  <%= @user.favorite_cinema %>
+</p>
+<p>
+  <strong>Birthday:</strong>
+  <%= @user.day %>/<%= @user.month %>/<%= @user.year %>
+</p>
 
-<%= link_to 'Back', users_path %>
+<p> 
+<strong>Giới tính:</strong>
+<% if @user.sex %>Nam 
+<% else %> Nữ 
+<% end %>
+</p>
+

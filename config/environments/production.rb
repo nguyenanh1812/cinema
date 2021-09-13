@@ -16,6 +16,24 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.action_mailer.default_url_options = 
+      #{ :host => 'booking-tickets-1418.herokuapp.com' } 
+      { :host => 'heroku-test-rails.herokuapp.com' } 
+  #Gui mail xac nhan tai khoan
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true  
+  config.action_mailer.raise_delivery_errors = true 
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV['gmail_username'],
+    :password             => ENV['gmail_password'],
+    :authentication       => "plain",
+    :domain               => 'herokuapp.com',
+    :enable_starttls_auto => true
+  }
+
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true

@@ -267,7 +267,6 @@
   box-sizing: border-box;
 }
 .r-login  select {
-  width: 100%;
   padding: 5px 5px;
   margin: 8px 0;
   display: inline-block;
@@ -275,12 +274,15 @@
   border-radius: 2px;
   box-sizing: border-box;
 }
+.select-100 select{
+    width: 100%;
+}
+.select-20 select{
+    width: 20%;
+}
 .r-login  label[for=r-birthday]{
     display:block;
 }
- .r-login  select.r-bday,.r-login  select.r-bmonth,.r-login  select.r-byear{
-    width: 20%;
- }
 
 .r-login input[type=submit], .form-register-content input[type=button] {
   width: 100%;
