@@ -330,3 +330,177 @@
   margin: 4px 0 12px;
   display: inline-block;
 }
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+// user ui
+.main {
+    width: 980px;
+    margin: 0 auto;
+}
+.col-left-first {
+    margin-bottom: 0;
+}
+.col-left, .col-main {
+    padding: 0 10px;
+}
+.col-left {
+    float: left;
+    width: 25%;
+    padding-left: 0;
+    clear: left;
+}
+.block-account .block-title {
+    padding-top: 0;
+    border-top: none;
+}
+.block-title {
+    position: relative;
+    padding: 10px 0 0;
+    margin-bottom: 5px;
+}
+.block-title strong {
+    margin: 0;
+    font-size: 22px;
+    font-style: normal;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: #e71a0f;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+.block-content {
+    margin-top: 5px;
+}
+.block-account .block-content li {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/ribon_left-ccc.png) no-repeat scroll left center #ccc;
+    color: #fff;
+    height: 34px;
+    padding-left: 18px;
+    float: left;
+    width: 100%;
+}
+.block-content li.current {
+    background: url(https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/ribon_left.png) no-repeat scroll left center #e71a0f !important;
+    color: #fff;
+    padding-left: 18px;
+}
+a {
+    background-color: transparent;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+.block-account .block-content li a {
+    color: #666;
+    margin-left: 5px ;
+    line-height: 34px ;
+    font-weight: bold;
+    font-size: 12px ;
+}
+
+.block-account li {
+    text-transform: uppercase;
+    margin: 2px 0;
+    margin-top: 2px;
+    margin-right: 0px;
+    margin-bottom: 2px;
+    margin-left: 0px;
+}
+.block-content li.current a {
+    color: #fff !important;
+    margin-left: 5px ;
+    line-height: 34px ;
+    font-weight: bold;
+    font-size: 12px ;
+}
+.my-account {
+    font-size: 12px;
+}
+.dashboard {
+    color: #4a452a;
+}
+.col-main {
+    width: 75%;
+    float: right;
+    padding-right: 0;
+}
+.my-account .page-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 0px;
+    background: #222;
+    height: 34px;
+    margin-bottom: 10px;
+}
+.page-title h1 {
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 34px;
+    text-align: center !important;
+    font-size: 22px;
+    margin-top: 0;
+}
+.format-profile-cgv {
+    float: left;
+    width: 100%;
+    padding: 0px;
+}
+.my-profile-cgv {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.box-content, .welcome-msg {
+    font-size: 13px;
+}
+.dashboard .box-account {
+    margin-bottom: 45px;
+}
+.dashboard .box-head {
+    margin-top: 30px;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 7px;
+}
+.dashboard .box-head h2 {
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 0;
+}
+.box-title h3 {
+    display: inline-block;
+}
+.title-my-cgv {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+    padding-right: 5%;
+}
+.box-account .box .box-title a {
+    float: none;
+    display: inline-block;
+}
+.box a {
+    background: #9d9b9b !important;
+    border: none;
+    color: #fff;
+    min-width: 85px;
+    padding: 3px 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+.box-content.box-content-my-cgv span {
+    float: left;
+    width: 100%;
+    display: inline;
+    margin-bottom: 7px;
+}

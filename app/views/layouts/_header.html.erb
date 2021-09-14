@@ -5,11 +5,10 @@
             <li><a href="#">Tin mới & Ưu đãi</a></li>
             <li><a href="#">Vé Của Tôi </li>
             
-            <% if logged_in? %>
-				<!--<li><%= link_to "Users", users_path %></li>-->
-                <li><%= link_to "Profile", current_user %></li>
+            <% if logged_in? %>               
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                <li><%= link_to "Log out", logout_path, method: :delete %></li>
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "thoát", logout_path, method: :delete %></li>
 			<% else %>
                 <li><%= link_to "đăng nhập/đăng ký", sessions_new_path %></li>
             <% end %>

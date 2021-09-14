@@ -1,35 +1,116 @@
-<title><%= @user.name %></title>
- 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= @user.name %></title>
+</head>
+<body>
+<div class="container">
+      <br>
+      <div class="main">
+  <div class="col-left sidebar col-left-first">
+    <div class="block block-account">
+      <div class="block-title">
+        <strong><span>Tài khoản CGV</span></strong>
+      </div>
+      <div class="block-content">
+        <ul>
+          <li class="current">
+            <%= link_to "Thông tin chung", current_user %>
+          </li>
+          <li><%= link_to "cập nhật thông tin tài khoản", edit_user_path(current_user) %></li>
+          <li>
+            <a href="#">Lịch sử giao dịch</a>
+          </li>
+          <li>
+            <a href="#">THẺ THÀNH VIÊN</a>
+          </li>
+          <li>
+            <a href="#">VOUCHER</a>
+          </li>
+          <li>
+            <a href="#">THẺ QUÀ TẶNG</a>
+          </li>
+          <li>
+            <a href="#">ĐIỂM THƯỞNG</a>
+          </li>
+          <li>
+            <a href="#">COUPON</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-main">
+    <div class="my-account">
+      <div class="dashboard">
+        <div class="page-title">
+          <h1>Thông tin chung</h1>
+        </div>
+        <div class="format-profile-cgv">
+          <div class="my-profile-cgv">
+            <div>
+              <img src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/icon-profile-cgv.png" width="120" height="120" alt="Avatar Profile">
+              <br><strong>Thẻ thành viên</strong><br>
+              <img src="https://www.barcodesinc.com/generator_files/image.php?code=9991979941331435&style=100&type=C39&&width=220&height=50&xres=2&font=2" >
+            </div>
+          </div>
+          <div class="welcome-msg">
+            <p class="hello"><strong>Xin chào <%= @user.name %>,</strong></p>
+            <p>Với trang này, bạn sẽ quản lý được tất cả thông tin tài khoản của mình.</p>
+          </div>
+          <div class="box-account box-info">
+            <div class="box-head">
+              <h2>Thông tin tài khoản</h2>
+            </div>
+            <div class="box">
+              <div class="box-title">
+                <h3 class="title-my-cgv">Liên hệ</h3>
+                <%= link_to "Thay đổi", edit_user_path(current_user) %>
+              </div>
+              <div class="box-content box-content-my-cgv col2-set">
+                <p>
+                  <strong>Name:</strong>
+                  <%= @user.name %>
+                </p>
 
-<p>
-  <strong>Phone Number:</strong>
-  <%= @user.phonenum %>
-</p>
-<p><strong> City:</strong>
-<%= @user.city%>
-</p>
-<p>
-  <strong>Favorite Cinema:</strong>
-  <%= @user.favorite_cinema %>
-</p>
-<p>
-  <strong>Birthday:</strong>
-  <%= @user.day %>/<%= @user.month %>/<%= @user.year %>
-</p>
+                <p>
+                  <strong>Email:</strong>
+                  <%= @user.email %>
+                </p>
 
-<p> 
-<strong>Giới tính:</strong>
-<% if @user.sex %>Nam 
-<% else %> Nữ 
-<% end %>
-</p>
+                <p>
+                  <strong>Phone Number:</strong>
+                  <%= @user.phonenum %>
+                </p>
+                <p><strong> City:</strong>
+                <%= @user.city%>
+                </p>
+                <p>
+                  <strong>Favorite Cinema:</strong>
+                  <%= @user.favorite_cinema %>
+                </p>
+                <p>
+                  <strong>Birthday:</strong>
+                  <%= @user.day %>/<%= @user.month %>/<%= @user.year %>
+                </p>
 
+                <p> 
+                <strong>Giới tính:</strong>
+                <% if @user.sex %>Nam 
+                <% else %> Nữ 
+                <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+</body>
+</html>
