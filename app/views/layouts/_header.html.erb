@@ -6,7 +6,7 @@
             <li><a href="#">Vé Của Tôi </li>
             
             <% if logged_in? %>               
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <!--<li><%= link_to "Settings", edit_user_path(current_user) %></li>-->
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "thoát", logout_path, method: :delete %></li>
 			<% else %>
