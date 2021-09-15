@@ -8,17 +8,13 @@ class User < ApplicationRecord
   	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, length: { maximum: 255 },
 							format: { with: VALID_EMAIL_REGEX }, #email phai co dang kytu@.kytu
-							#uniqueness: true #Tinh duy nhat cua email
 							uniqueness: { case_sensitive: false } #Tinh duy nhat cua email khong phan biet chu hoa chu thuong
-							#uniqueness: true # vi trong user.yml da xoa
+							
 
 	has_secure_password  # them mat khau bao mat la ham bam
-	validates :password, presence: true, length: { minimum: 6 } # them dieu kien mat khau toi thieu 6
+	validates :password, presence: true, length: { minimum: 6 },  allow_nil: true # them dieu kien mat khau toi thieu 6
 
 	class << self
-	# Trả về thông báo băm của chuỗi đã cho. 
-	#def User.digest(string) 
-	#def self.digest(string) #Loại bỏ mã thông báo mới và các phương thức thông báo bằng cách sử dụng self.
 	
 		def digest(string)
 			cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -26,9 +22,6 @@ class User < ApplicationRecord
 			BCrypt::Password.create(string, cost: cost)
 		end
 		
-		# Trả về một mã (token) thông báo ngẫu nhiên
-		#def User.new_token
-		#def self.new_token #Loại bỏ mã thông báo mới và các phương thức thông báo bằng cách sử dụng self.
 		
 		def new_token
 			SecureRandom.urlsafe_base64
@@ -56,13 +49,11 @@ class User < ApplicationRecord
 	def activate
 		update_attribute(:activated,	true)
 		update_attribute(:activated_at, Time.zone.now)
-		#update_columns(activated: true, activated_at: Time.zone.now)
-		#update_columns(activated: FILL_IN, activated_at: FILL_IN)
+		
 	end
 	# Gửi email kích hoạt
 	def send_activation_email
 		UserMailer.account_activation(self).deliver_now
-		#ExampleMailer.sample_email(self).deliver
 	end
 
 	# Đặt thuộc tính đặt lại mật khẩu.
@@ -74,7 +65,6 @@ class User < ApplicationRecord
 
 	# Gửi email đặt lại mật khẩu.
 	def send_password_reset_email
-		#UserMailer.password_reset(self).deliver_now
 		ExampleMailer.password_reset(self).deliver
 	end
 
@@ -83,6 +73,10 @@ class User < ApplicationRecord
 		reset_sent_at < 2.hours.ago
 	end
 	
+	def self.authenticate email, password
+		User.find_by_email(email).try(:authenticate, password)
+	end
+
 	private
 	#	Chuyển đổi email thành tất cả các chữ thường
 	def downcase_email

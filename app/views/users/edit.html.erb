@@ -59,13 +59,35 @@
                         </ul>
                     </div>
                 <% end %>
+                <p>
+                  <strong>Email:</strong>
+                  <%= @user.email %>
+                </p>
+                <%= hidden_field_tag :email, @user.email %>
 
                 <%= f.label :name %>
-                <%= f.text_field :name, class: 'form-control' %>
-                <%= f.label :email %>
-                <%= f.email_field :email, class: 'form-control' %>
-                <%= f.label :password %>
-                <%= f.password_field :password, class: 'form-control' %>
+                <%= f.text_field :name, class: 'form-control' %> 
+                              
+                <%= f.label :current_password, "Current password" %>
+                <%= f.password_field :current_password, class: 'form-control' %>
+
+                <input type="checkbox" id="myCheck"  onclick="addbox();"> Thay đổi mật khẩu
+                <div id="area" style="display: none;" >
+                  <%= f.label :password, "New password" %>
+                  <%= f.password_field :password, class: 'form-control' %>
+
+                  <%= f.label :password_confirmation, "Confirmation" %>
+                  <%= f.password_field :password_confirmation, class: 'form-control' %>
+                </div>
+                <script type="text/javascript">
+                  function addbox() {
+                    if (document.getElementById('myCheck').checked) {
+                        document.getElementById('area').style.display = 'block';
+                    } else {
+                        document.getElementById('area').style.display = 'none';
+                    }
+                  }
+                </script>
 
                 <%= f.label :Số_điện_thoại %>
                 <%= f.text_field :phonenum, class:'form-control' %>
@@ -85,19 +107,19 @@
 
                 <label class="gender-title">Giới tính* 
                 </label>  
-                <%= f.radio_button :sex, true %> <strong>Nam</strong>
-                <%= f.radio_button :sex, false %> <strong> Nữ</strong>    
+                  <%= f.radio_button :sex, true %> <strong>Nam</strong>
+                  <%= f.radio_button :sex, false %> <strong> Nữ</strong>    
                 </div>
 
                 <div class="select-100">
-                <%= f.label :city, "Khu vực" %>
-                <%= f.select :city, options_for_select(["Hồ Chí Minh","Hà Nội","Hải Phòng","Đà Nẵng"]) %>
-                                
-                <%= f.label :favorite_cinema, "Rạp yêu thích" %>
-                <%= f.select :favorite_cinema, options_for_select(["CGV Aeon Canary","CGV Aeon Ha Dong","CGV Aeon Hai Phong","CGV Aeon Long Bien","CGV Aeon Tan Phu",
-                "CGV Big C Dong Nai","CGV Aeon Mall Binh Tan","CGV Big C My Tho"]) %>
+                  <%= f.label :city, "Khu vực" %>
+                  <%= f.select :city, options_for_select(["Hồ Chí Minh","Hà Nội","Hải Phòng","Đà Nẵng"]) %>
+                                  
+                  <%= f.label :favorite_cinema, "Rạp yêu thích" %>
+                  <%= f.select :favorite_cinema, options_for_select(["CGV Aeon Canary","CGV Aeon Ha Dong","CGV Aeon Hai Phong","CGV Aeon Long Bien","CGV Aeon Tan Phu",
+                  "CGV Big C Dong Nai","CGV Aeon Mall Binh Tan","CGV Big C My Tho"]) %>
                 </div>
-                
+
                 <%= f.submit "Cập nhật" %>
               <% end %>
 

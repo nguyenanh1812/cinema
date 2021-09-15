@@ -16,13 +16,11 @@ class UsersController < ApplicationController
     def edit
         @user = User.find(params[:id]) 
     end
+    
     def create
         @user = User.new(user_params)
           if @user.save
-            #@user.send_activation_email
             ExampleMailer.sample_email(@user).deliver
-            #log_in @user # khi dang ki thanh cong thi dang nhap luon
-            #flash[:success] = "Welcome to cgv!"
             flash[:info] = "Please check your email to activate your account."
             redirect_to root_url
           else
@@ -32,13 +30,23 @@ class UsersController < ApplicationController
     end
     def update
       @user = User.find(params[:id])
-      if @user.update(user_params)
-        flash[:success] = "Update successfully!"
-        redirect_to @user
-      else
+      current_password = params[:user][:current_password]
+      user = User.authenticate(@user.email, current_password)
+      
+      if @user && user
+        if @user.update(edit_user_params)
+          flash[:success] = "Update successfully!"
+          redirect_to @user
+        else
+          flash[:danger] = "Something wrong"
+          render 'edit'
+        end
+      else 
+        flash[:danger] = "Wrong password"
         render 'edit'
       end
     end
+    
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -48,6 +56,9 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :email,:password, :phonenum, :city, :favorite_cinema, :day, :month, :year, :sex) 
+    end
+    def edit_user_params
+      params.require(:user).permit(:name, :email,:password,:password_confirmation,:phonenum, :city, :favorite_cinema, :day, :month, :year, :sex) 
     end
 
     # Xác nhận người dùng chính xác.
