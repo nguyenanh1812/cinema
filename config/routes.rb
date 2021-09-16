@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get 'movie/new'
+  #get 'movie/show'
+  get 'movie/index'
   get 'errors/not_found'
   get 'errors/internal_server_error'
   get 'password_resets/new'
   get 'password_resets/edit'
-  root 'pages#welcome'
+  #root 'pages#welcome'
+  root 'movie#index'
   resources :users
+  resources :movie
   resources :account_activations, only: [:edit]
   
   get 'sessions/new'

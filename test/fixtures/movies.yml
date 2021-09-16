@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  title: MyString
+  cast: MyString
+  description: MyText
+  time: MyString
+  release: 2021-09-15
+  gerne_id: 1
+
+two:
+  name: MyString
+  title: MyString
+  cast: MyString
+  description: MyText
+  time: MyString
+  release: 2021-09-15
+  gerne_id: 1

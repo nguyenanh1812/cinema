@@ -1,0 +1,17 @@
+<title>Movies</title>
+
+<h1>Phim Đang Chiếu</h1>
+
+<%= pagy_bootstrap_nav(@pagy).html_safe %>
+
+<% @movies.each do |movie| %>
+    <div class="movie_poster">
+    <img src="<%= movie.image_link %>" class="img-thumbnail" >
+    <li class="product-name"><%= link_to movie.name, movie %></li>
+    <li><strong>Thời lượng: </strong><%= movie.time %>   </li>
+    <li><strong>Khởi chiếu: </strong><%= movie.release %>   </li>
+    </div>
+<% end %>
+<div style="clear:left">
+<%= pagy_bootstrap_nav(@pagy).html_safe %>
+</div>

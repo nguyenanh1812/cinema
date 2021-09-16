@@ -7,6 +7,8 @@
             
             <% if logged_in? %>               
                 <!--<li><%= link_to "Settings", edit_user_path(current_user) %></li>-->
+                <li><%= link_to "New Phim đang chiếu", movie_new_path %></li>
+                <li><%= link_to "List Phim đang chiếu", movie_index_path %></li>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "thoát", logout_path, method: :delete %></li>
 			<% else %>

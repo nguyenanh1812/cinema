@@ -1,0 +1,31 @@
+<title><%= @movie.name %> </title>
+<p>
+  <img src="<%= @movie.image_link %>">
+</p>
+
+<p>
+  <%= @movie.title %>
+</p>
+<p>
+  <strong>Tên</strong>
+  <%= @movie.name %>
+</p>
+<p>
+  <strong>Diễn viên</strong>
+  <%= @movie.cast %>
+</p>
+<p>
+  <strong>Thể loại</strong>
+  <%= @movie.genre_id %>
+</p>
+<p>
+  <strong>Thời lượng:</strong>
+  <%= @movie.time %>
+</p>
+<p>
+  <strong>Khởi chiếu:</strong>
+  <%= @movie.release %>
+</p>
+<p>
+    <%= @movie.description %>
+</p>
