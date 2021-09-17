@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_090951) do
+ActiveRecord::Schema.define(version: 2021_09_17_092627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "booking_tickets", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -33,6 +40,47 @@ ActiveRecord::Schema.define(version: 2021_09_16_090951) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "image_link"
     t.integer "genre_id"
+  end
+
+  create_table "screens", force: :cascade do |t|
+    t.string "name"
+    t.integer "total_seat"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "seat_reserveds", force: :cascade do |t|
+    t.integer "seat_id"
+    t.integer "booking_id"
+    t.integer "show_id"
+    t.boolean "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "seat_types", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.integer "screen_id"
+    t.integer "seat_type_id"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "screen_id"
+    t.datetime "date"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

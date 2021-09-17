@@ -1,22 +1,27 @@
 <title><%= @movie.name %> </title>
-<p>
-  <img src="<%= @movie.image_link %>">
+<br>
+<p class= "movie_poster">
+  <img src="<%= @movie.image_link %>", class="img-thumbnail">
 </p>
 
-<p>
+<h2>
+<strong>
   <%= @movie.title %>
-</p>
+</strong></h2><hr>
 <p>
-  <strong>Tên</strong>
+  <strong>Tên:</strong>
   <%= @movie.name %>
 </p>
 <p>
-  <strong>Diễn viên</strong>
+  <strong>Diễn viên:</strong>
   <%= @movie.cast %>
 </p>
 <p>
-  <strong>Thể loại</strong>
-  <%= @movie.genre_id %>
+  <strong>Thể loại:</strong>
+  <!--<%= @movie.genre_id %>-->
+  <% @genre.each do |a| %>
+    <%= a.name%>
+  <% end %>
 </p>
 <p>
   <strong>Thời lượng:</strong>
@@ -27,5 +32,10 @@
   <%= @movie.release %>
 </p>
 <p>
-    <%= @movie.description %>
+  <strong>Mô tả:</strong>
+  <%= @movie.description %>
 </p>
+
+<p style="clear:left; float:right;">
+<%= link_to 'Quay lại', movie_index_path %>
+<p>
