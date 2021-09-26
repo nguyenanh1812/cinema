@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'screens/Show'
+  #get 'booking_tickets/show'
+  get '/booking_tickets/show', to: 'booking_tickets#show'
+  #get '/booking_ticket/:movie_id', to: 'booking_tickets#show'
+  get 'show/:show_id/screen/:id', to: 'screens#show', as: 'screen'
+  get 'show/:show_id/booking_tickets/new', to: 'booking_tickets#new', as: 'booking_ticket'
+  get 'booking_tickets/index'
+  get 'shows/index'
   get 'movie/new'
   #get 'movie/show'
   get 'movie/index'
@@ -10,6 +18,9 @@ Rails.application.routes.draw do
   root 'movie#index'
   resources :users
   resources :movie
+  resources :booking_tickets
+  resources :screens
+  resources :shows
   resources :account_activations, only: [:edit]
   
   get 'sessions/new'

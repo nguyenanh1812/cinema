@@ -10,6 +10,7 @@ gem 'pg', '~> 1.1'
 gem 'bcrypt', '3.1.13'
 gem 'bootstrap-sass', '3.4.1'
 
+gem 'faker'
 gem 'dotenv-rails'
 gem "ransack"
 gem "pagy" #phan trang

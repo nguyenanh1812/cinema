@@ -1,0 +1,56 @@
+// Place all the styles related to the Screens controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.seats {
+    border:1px solid red;
+    background:yellow;
+  } 
+
+.Displaytable {
+  text-align:center;
+  border: 1px solid;
+  background-color: rgb(228, 217, 217);
+  width: 500px;
+  height: 100px;
+}
+textarea {
+  border:none;
+  background:transparent;
+}
+.seatStructure input[type=checkbox]:before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  vertical-align:middle;
+  text-align: center;
+  
+  background-color:#ccc;
+}
+table {
+  td {
+    padding:12px;
+  }
+  margin-bottom: 20px;
+  text-align:center;
+}
+.seatStructure input[type=checkbox]:checked:before {
+  background-color:Green;
+  font-size: 15px;
+}
+
+.btn-confirm {
+  margin: 15px 0 20px 0;
+  color: gray;
+  font-weight: 600;
+  //height: 20px;
+}
+
+.fuselage {
+  margin-left: 30%;
+  margin-right: 30%;
+  border-right: 5px solid #d8d8d8;
+  border-left: 5px solid #d8d8d8;
+}
+

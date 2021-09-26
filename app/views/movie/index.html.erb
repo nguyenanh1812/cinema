@@ -7,9 +7,10 @@
 <% @movies.each do |movie| %>
     <div class="movie_poster">
     <img src="<%= movie.image_link %>" class="img-thumbnail" >
-    <li class="product-name"><%= link_to movie.name, movie %></li>
+    <li class="product-name"><%= link_to movie.name, movie %></li>    
     <li><strong>Thời lượng: </strong><%= movie.time %>   </li>
     <li><strong>Khởi chiếu: </strong><%= movie.release %>   </li>
+    <li><strong>Thể loại: <strong><%= movie.genre.name %> </li><br>
     </div>
 <% end %>
 <div style="clear:left">

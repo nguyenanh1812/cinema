@@ -3,12 +3,13 @@ class MovieController < ApplicationController
   end
   
   def index 
-    @pagy, @movies = pagy(Movie.all, items: 3)
+    @pagy, @movies = pagy(Movie.all, items: 9)
   end
   
   def show
     @movie = Movie.find(params[:id])
     @genre = Genre.where(id: @movie.genre_id)
+    @shows = Show.where(movie_id: @movie.id)
   end
 
 end

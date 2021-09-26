@@ -1,0 +1,47 @@
+<script>
+  var all_number_seat = localStorage.getItem("all_number_seat");
+  var total_price = localStorage.getItem("total_price");
+  var list_seats = localStorage.getItem("list_seats");
+  $("#f_seat_quan").val(all_number_seat);
+  $("#f_seats_name").val(list_seats);
+  $("#f_seat_price").val(total_price);
+
+  $("#number_seat").html("So ghe da dat: " + all_number_seat);
+  $("#name_seats").html("Ghe da dat: " + list_seats);
+  $("#total_price").html("Tong gia ve: " + total_price)
+
+</script>
+<br>
+<p class= "movie_poster">
+  <img src="<%= @movie.image_link %>">
+</p>
+<h2><strong>Thông tin hóa đơn</strong></h2>
+<hr>
+<h3><%= @movie.title %></h3>
+<div style="margin-left:350px; width: 500; border: 0px solid black; background-color: lightgray"><br>
+  <div style="margin-left:20px"><h4><%= "Xuất chiếu: " + @show.start_time + " - " + @show.end_time %></h4>
+  <h4 id="number_seat"></h4> 
+  <h4 id="name_seats"></h4> 
+  <h4 id="total_price"></h4></div>
+  <br>
+</div>
+<br>       
+<%= form_for(@booking_ticket) do |f| %>
+  <%= f.hidden_field :seat_quantity, id: "f_seat_quan" %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :total_price, id: "f_seat_price" %>
+  <%= f.hidden_field :creat_at, value: Time.zone.now %>
+  <%= f.hidden_field :show_id, value: @show.id %>
+  <%= f.hidden_field :seats_name, id: "f_seats_name" %>
+  
+  
+  <span><%= f.submit "Thanh toan", class: "btn btn-primary "%>
+  <%= link_to "Huy", root_path, class:"btn btn-primary" %> </span>
+<% end %>  
+
+
+
+
+
+
+

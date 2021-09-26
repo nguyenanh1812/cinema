@@ -3,11 +3,10 @@
         <ul >
             <li><a href="#">tuyển dụng</a></li>
             <li><a href="#">Tin mới & Ưu đãi</a></li>
-            <li><a href="#">Vé Của Tôi </li>
             
             <% if logged_in? %>               
                 <!--<li><%= link_to "Settings", edit_user_path(current_user) %></li>-->
-                <li><%= link_to "New Phim đang chiếu", movie_new_path %></li>
+                <li><%= link_to "Vé Của Tôi",booking_tickets_index_path %></li>
                 <li><%= link_to "List Phim đang chiếu", movie_index_path %></li>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "thoát", logout_path, method: :delete %></li>

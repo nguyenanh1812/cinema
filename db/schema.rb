@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_092627) do
+ActiveRecord::Schema.define(version: 2021_09_27_041018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,20 @@ ActiveRecord::Schema.define(version: 2021_09_17_092627) do
   create_table "booking_tickets", force: :cascade do |t|
     t.integer "user_id"
     t.integer "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "seat_quantity"
+    t.date "creat_at"
+    t.boolean "status"
+    t.integer "show_id"
+    t.string "seats_name"
+  end
+
+  create_table "cinenma_seats", force: :cascade do |t|
+    t.integer "row"
+    t.integer "seat_number"
+    t.integer "price"
+    t.integer "screen_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -71,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_09_17_092627) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "rows"
   end
 
   create_table "shows", force: :cascade do |t|
@@ -81,6 +96,9 @@ ActiveRecord::Schema.define(version: 2021_09_17_092627) do
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "strat_time"
+    t.string "end_time"
+    t.string "start_time"
   end
 
   create_table "users", force: :cascade do |t|

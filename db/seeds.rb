@@ -12,6 +12,15 @@ User.create!(name: "Admin",
             activated: true,
             activated_at: Time.zone.now)
 
+Screen.create!(name:"phong 1", total_seat: 50)
+Show.create!(movie_id: 2, screen_id: 1, start_time:'13:00'  , end_time: '15:20', date: '2021-9-30' )
+Show.create!(movie_id: 2, screen_id: 1, start_time:'18:00'  , end_time: '20:20', date: '2021-9-30' )
+Show.create!(movie_id: 2, screen_id: 1, start_time:'10:00'  , end_time: '12:20', date: '2021-9-30' )
+5.times do |x|
+    10.times do |z|
+      CinenmaSeat.create(row: x+1, seat_number: z+1, screen_id: 1, price: 100)
+    end
+end
 
 Genre.create!(name: "action")
 Genre.create!(name: "Horror")
@@ -47,3 +56,8 @@ Movie.create!(name: "GODZILLA VS. KONG", title: "GODZILLA đại chiến KONG",
     mới chỉ là điểm khởi đầu để khám phá những bí ẩn nằm sâu trong tâm Trái đất.",
     release: Time.zone.now, genre_id: 1,
     image_link: "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/g/o/godzilla_vs_1_.jpg")
+10.times do |x|
+        Movie.create(name: Faker::Movie.title, title: Faker::Movie.title, time:"153 phút" , cast: Faker::Movies::BackToTheFuture.character,
+        image_link: "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/g/o/godzilla_vs_1_.jpg", 
+        description: "description", release: Faker::Date.in_date_period, genre_id: Random.rand(1..3))
+end

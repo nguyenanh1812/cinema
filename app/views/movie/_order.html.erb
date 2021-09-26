@@ -1,0 +1,18 @@
+
+<div style="clear:left;">
+</div>
+<% if !@shows.first.nil? %>
+  <p>
+    <strong>Cac shows:</strong>
+    <% @shows.each do |show| %> 
+      <br>Thoi gian bat dau <%= show.date.strftime("%d/%m")%>:   <%= show.start_time %> - <%= show.end_time%>
+      <%= link_to 'phòng ' + show.screen_id.to_s, screen_path(show.id, show.screen_id) %>
+    <% end %>
+  </p> 
+<% else %>  
+  <div>Chưa có lịch chiếu cho ngày này. Hãy quay lại sau.</div>    
+<% end %>
+
+
+
+

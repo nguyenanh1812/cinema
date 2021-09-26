@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Lịch sử giao dịch</title>
+</head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+<div class="container">
+      <br>
+      <div class="main">
+  <div class="col-left sidebar col-left-first">
+    <div class="block block-account">
+      <div class="block-title">
+        <strong><span>Tài khoản CGV</span></strong>
+      </div>
+      <div class="block-content">
+        <ul>
+          <li>
+            <%= link_to "Thông tin chung", current_user %>
+          </li>
+          <li><%= link_to "cập nhật thông tin tài khoản", edit_user_path(current_user) %></li>
+          <li class="current">
+            <%= link_to "Lịch sử giao dịch", booking_tickets_index_path %>
+          </li>
+          <li>
+            <a href="#">THẺ THÀNH VIÊN</a>
+          </li>
+          <li>
+            <a href="#">VOUCHER</a>
+          </li>
+          <li>
+            <a href="#">THẺ QUÀ TẶNG</a>
+          </li>
+          <li>
+            <a href="#">ĐIỂM THƯỞNG</a>
+          </li>
+          <li>
+            <a href="#">COUPON</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-main">
+    <div class="my-account">
+      <div class="dashboard">
+        <div class="page-title">
+          <h1>Lịch sử giao dịch</h1>
+        </div>
+        
+            <table>
+            <tr>
+            <th>Ngay giao dich </th>
+              <th>Ma giao dich </th>
+              <th>Phim chieu  </th>
+              <th>So luong ghe </th>
+              <th>Tong thanh toan </th>
+              <th>Chi tiet </th>
+            </tr>
+            <% @booking_ticket.each do |b| %>
+              <tr> 
+                <td>
+                  <%= b.creat_at %>   
+                </td>
+                <td>
+                  <%= b.id %>   
+                </td>
+                <td>
+                <% @shows.each do |show| %>
+                  <% if show.id == b.show_id %>
+                    <% @movies.each do |movie| %>
+                      <% if movie.id == show.movie_id %>
+                        <%= movie.title %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                  <%= b.show_id %>   
+                </td>
+                <td>
+                  <%= b.seat_quantity %>: <%= b.seats_name %> 
+                </td>
+                <td>
+                  <%= b.total_price %>.000VND  
+                </td>
+                <td>
+                <%= link_to "Xem chi tiet" , booking_tickets_show_path(b.id) ,  class:"btn btn-primary"%>
+                </td>
+              </tr>
+            <% end %>
+            </table>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

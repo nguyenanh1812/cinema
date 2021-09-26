@@ -12,6 +12,7 @@
   <strong>Tên:</strong>
   <%= @movie.name %>
 </p>
+
 <p>
   <strong>Diễn viên:</strong>
   <%= @movie.cast %>
@@ -36,6 +37,23 @@
   <%= @movie.description %>
 </p>
 
+<button onclick="myFunction()">Xem lich chieu</button> 
+
+<div id="order" style="display: none;">
+  <%= render 'movie/order' %>
+  <button onclick="myFunction()">Close</button> 
+</div>
+<script>
+function myFunction() {
+  var x = document.getElementById("order");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+
 <p style="clear:left; float:right;">
-<%= link_to 'Quay lại', movie_index_path %>
+  <%= link_to 'Quay lại', movie_index_path %>
 <p>

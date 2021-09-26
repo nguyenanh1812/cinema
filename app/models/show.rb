@@ -1,5 +1,5 @@
 class Show < ApplicationRecord
-    belongs_to :booking_ticket
-    belongs_to :seat
-    belongs_to :show
+    has_many :booking_tickets
+    belongs_to :movie   , optional: true
+    belongs_to :screen  , optional: true
 end
