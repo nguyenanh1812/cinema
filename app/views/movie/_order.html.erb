@@ -3,14 +3,21 @@
 </div>
 <% if !@shows.first.nil? %>
   <p>
-    <strong>Cac shows:</strong>
+    <strong>Các xuất chiếu:</strong>
+    
     <% @shows.each do |show| %> 
-      <br>Thoi gian bat dau <%= show.date.strftime("%d/%m")%>:   <%= show.start_time %> - <%= show.end_time%>
-      <%= link_to 'phòng ' + show.screen_id.to_s, screen_path(show.id, show.screen_id) %>
+      <div class="btn-click-show">
+      <%= link_to screen_path(show.id, show.screen_id) do %>
+        <p style="margin: 15px;"><b><%= show.date.strftime("%d/%m")%><%= ':' + show.start_time + ' - ' %><%= show.end_time%><br><b>
+        <center>Phòng <%= show.screen_id %></center>
+      <% end %>
+
+      </div>
     <% end %>
+    <br><br><br>
   </p> 
 <% else %>  
-  <div>Chưa có lịch chiếu cho ngày này. Hãy quay lại sau.</div>    
+  <div>Chưa có lịch chiếu cho ngày này. Hãy quay lại sau!</div>    
 <% end %>
 
 

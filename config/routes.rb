@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'screens/Show'
   #get 'booking_tickets/show'
-  get '/booking_tickets/show', to: 'booking_tickets#show'
+  get '/booking_tickets/show/:id', to: 'booking_tickets#show' , as: 'show_tickets'
   #get '/booking_ticket/:movie_id', to: 'booking_tickets#show'
   get 'show/:show_id/screen/:id', to: 'screens#show', as: 'screen'
   get 'show/:show_id/booking_tickets/new', to: 'booking_tickets#new', as: 'booking_ticket'

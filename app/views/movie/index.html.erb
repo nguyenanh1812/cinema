@@ -1,8 +1,17 @@
 <title>Movies</title>
 
+<br>
+<div id="slideshow">
+  <div class="slide-wrapper">
+    <div class="slide"><img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/g/cgv-digital-team-diy-980x448.jpg"></div>
+    <div class="slide"><img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/g/cgv-production-team-midnite-streetfood-980x448_3.jpg"></div>
+    <div class="slide"><img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/n/g/nguoiay-980x448.jpg"></div>
+  </div>
+</div>
+<br>
 <h1>Phim Đang Chiếu</h1>
-
-<%= pagy_bootstrap_nav(@pagy).html_safe %>
+<div style="border-bottom: 4px solid black; border-width:80%;">
+</div><br>
 
 <% @movies.each do |movie| %>
     <div class="movie_poster">

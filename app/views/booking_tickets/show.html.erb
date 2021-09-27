@@ -1,0 +1,23 @@
+<title>Chi tiet ve</title>
+<br><br>
+<div style= "border: 2px solid black; height:220px">
+    <div style="float:left ; width:250px; border-right: 2px dashed #b1154a; height:210px">
+        <img style=" height:200px;" src="https://i.pinimg.com/564x/e9/d4/97/e9d49723d00cbb642dd0817db861af84.jpg" >
+    </div>
+    <div>
+        <h3> Tên phim: <b><%= @movie.title %></b></h3>
+        <h4 style="margin-top:20px"> Mã giao dịch: <%= @booking_ticket.id %> <span style="margin-left:100px"> Ngày đặt: <%= @booking_ticket.creat_at.strftime("%d/%m/%Y") %> </span></h4>
+        <div style="margin-top:20px">
+            <p> Rap phim: CGV Aeon </p>
+            <span> Ngày chiếu: <%= @show.date.strftime("%d/%m/%Y") %></span>
+            <span style="margin-left:10px"> Giờ chiếu phim: <%= @show.start_time %> - <%= @show.end_time %></span>
+            <span style="margin-left:10px"> Phong chieu <%= @screen.name %></span>
+            <span style="margin-left:10px"> Ghế ngồi: <%= @booking_ticket.seats_name %></span>
+        </div>
+        <center><h3>Tổng thanh toán: <%= @booking_ticket.total_price %>.000 VND</h3></center>  
+    </div>
+</div><br>
+<center>
+    <%= link_to "Quay lại lịch sử đặt Vé", booking_tickets_index_path, class:"btn btn-primary" %>
+    <%= link_to 'Quay lại trang chủ', root_path ,class:"btn btn-primary" %>
+</center>

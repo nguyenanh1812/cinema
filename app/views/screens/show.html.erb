@@ -1,120 +1,104 @@
-<body onload="onLoaderFunc()">
-  <div class="inputForm">
-      <center>
-        <span style="font-size:20px">Nhap so ghe: </span><input type="number" id="Numseats" required>
-        <button onclick="takeData()" class="btn btn-confirm">OK</button>
-      </center>
-    </div>    
-      <div class="seatStructure">
-        <center>
-          <p id="notification"></p>
-          <div class="screen"><h2 style="text-align:center; border-bottom: 8px solid gray; width:40%;">Screen</h2></div>
-          
-          <div class="fuselage">
-            <table id="seatsBlock" >
-              <tr>
-                <td> </td>
-                
-                <% @seats.maximum("seat_number").times do |z| %>
-                  <td><span><%= z+1 %></span> </td>
-                <% end %>
-                <% @seats.maximum("row").times do |a| %> 
-                  <tr>
-                    <td>
-                      <span style="margin-left: 1px;"><%= (a+65).chr %></span>
-                    </td>
-                  <% @seats.each do |x| %>                 
-                      <% if x.row == a +1 %>   
-                        <td><input type="checkbox" class="seats" value="<%= (a+65).chr %><%= x.seat_number.to_s %>" data-price="<%= x.price %>" ></td>   
-                      <% end %>  
-                  <% end -%>
-                  </tr>
-                <% end -%>
+<title>Chon ghe</title>
 
-              </tr>
-            </table>
-          </div>
-        
-        <button onclick="cap_nhat_luu_ghe()" class="btn btn-confirm">Luu ghe da chon</button>
-      </center>
-    </div>
-    <div class="displayerBoxes">
-      <center>
-        <table class="Displaytable">
+  <div class="seatStructure">
+    <center>
+      <p id="notification"></p>
+      <div class="screen"><h2 style="text-align:center; border-bottom: 8px solid gray; width:40%;">Screen</h2></div>
+      
+      <div class="fuselage">
+        <table id="seatsBlock" >
           <tr>
-            <td><b>Cac ghe da dat: </b></td>
-            <td><input type="lable" id="seatsDisplay"> </td>
+            <td></td>
+            
+            <% @seats.maximum("seat_number").times do |z| %>
+              <td><span><%= z+1 %></span> </td>
+            <% end %>
+            <% @seats.maximum("row").times do |a| %> 
+              <tr>
+                <td>
+                  <span style="margin-left: 1px;"><%= (a+65).chr %></span>
+                </td>
+              <% @seats.each do |x| %>
+                  <% if x.row == a +1 %>
+                    <% if x.id.in?(@seat_reserveds_ids) %>
+                      <td><span class="reddog"><input type="checkbox" disabled class="seats" value="" data-price="0"> </td>
+                    <% else %>
+                      <td><input type="checkbox" class="seats" value="<%= (a+65).chr %><%= x.seat_number.to_s %>" data-price="<%= x.price %>" data-seatid="<%= x.id%>"></td>    
+                    <% end %>
+                  <% end %>
+              <% end -%>
+              </tr>
+            <% end -%>
+
           </tr>
-          <tr><td><b>Tong thanh toan la: </b></td><td><input type="lable" id="priceAllSeat"> <td> </tr>
         </table>
-      </center>
-    </div>
-</body>
+      </div>
+    
+    <center>
+      <span class="reddog1"><input type="checkbox" disabled > <span style="margin-left: 5px;">Ghế có người đã đặt |</span></span>
+      <span style="margin-left: 10px;" class="reddog3"><input type="checkbox" disabled ><span style="margin-left: 5px;"> Ghế có thể đặt |</span></span>
+      <span style="margin-left: 10px;" class="reddog2"><input type="checkbox" disabled ><span style="margin-left: 5px;"> Ghế bạn chọn </span></span>
+    </center><br>
+    <button onclick="cap_nhat_luu_ghe()" class="btn btn-confirm">Lưu thông tin các ghế đã chọn</button>
+  </center>
+</div>
+
+<div class="displayerBoxes">
+  <center>
+    <table class="Displaytable">
+      <tr>
+        <td><b>Các ghế đã đặt: </b></td>
+        <td><input type="lable" disabled id="seatsDisplay"> </td>
+      </tr>
+      <tr><td><b>Tổng thanh toán là: </b></td><td><input type="lable" disabled id="priceAllSeat"> <td> </tr>
+    </table>
+  </center>
+</div>
+
 <center><span>
-  <%= link_to "Xac nhan", booking_ticket_path(@show.id) , class:"btn btn-confirm" %>
-  <button  onclick="tai_lai_trang()" class="btn btn-confirm" >Huy luu </button> 
+  <%= link_to "Xác nhận", booking_ticket_path(@show.id) , class:"btn btn-confirm" %>
+  <button  onclick="tai_lai_trang()" class="btn btn-confirm" >Hủy lưu </button> 
 </span> <center>
 
 <script type="text/javascript">
 function tai_lai_trang(){
   location.reload();
 }
-function onLoaderFunc(){
-  $(".seatStructure *").prop("disabled", true);
-  $(".displayerBoxes *").prop("disabled", true);
-}
 
-function takeData(){
-  if ( $("#Numseats").val().length == 0 || $("#Numseats").val() <= 0)
-  {
-    alert("Hay nhap so luong ghe can dat!");
-  }
-  else
-  {
-    $(".inputForm *").prop("disabled", true);
-    $(".seatStructure *").prop("disabled", false);
-    $("#notification").html("<strong>Chon ghe</strong>") ;
-  }
+function onLoaderFunc(){
+  $(".reddog *").prop("disabled", true);
 }
 
 function cap_nhat_luu_ghe(){ 
-  if ($("input:checked").length == ($("#Numseats").val()))
+  if ($("input:checked").length >0)
   {
-    $(".seatStructure *").prop("disabled", true);
     var sumSeatPrice = 0;
     var allNumberVals = [];
     var allSeatsVals = [];
+    var allSeatsIds = [];
 
-    allNumberVals.push($("#Numseats").val());
+    allNumberVals.push();
     $('#seatsBlock :checked').each(function() {
       allSeatsVals.push($(this).val());
+      allSeatsIds.push($(this).data("seatid"));
       sumSeatPrice += $(this).data('price') ; 
     });
 
     $('#seatsDisplay').val(allSeatsVals);
     $('#priceAllSeat').val(sumSeatPrice + ".000 Vnd");
 
-    localStorage.setItem("all_number_seat", allNumberVals);
+    localStorage.setItem("all_number_seat", $("input:checked").length);
     localStorage.setItem("total_price", sumSeatPrice);
     localStorage.setItem("list_seats", allSeatsVals);
+    localStorage.setItem("list_seat_ids", allSeatsIds);
     
   }
   else
   {
-    alert("Hay chon du " + ($("#Numseats").val()) + " cho ngoi!")
+    alert("Hãy chọn chỗ ngồi trước!")
   }
 }
 
-$(":checkbox").click(function() {
-  if ($("input:checked").length == ($("#Numseats").val())) {
-    $(":checkbox").prop('disabled', true);
-    $(':checked').prop('disabled', false);
-  }
-  else
-  {
-    $(":checkbox").prop('disabled', false);
-  }
-});   
 </script>
 
 

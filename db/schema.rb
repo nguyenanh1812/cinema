@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 2021_09_27_041018) do
   end
 
   create_table "seat_reserveds", force: :cascade do |t|
-    t.integer "seat_id"
-    t.integer "booking_id"
+    t.integer "cinenma_seat_id"
+    t.integer "booking_ticket_id"
     t.integer "show_id"
     t.boolean "status"
     t.datetime "created_at", precision: 6, null: false

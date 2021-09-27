@@ -1,3 +1,66 @@
 // Place all the styles related to the Movie controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.button {
+    background: #e71a0f;
+    display: inline-block;
+    padding: 6px 2px;
+    border: 0;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: Verdana, Arial, sans-serif;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.button > span {
+    border: 1px solid #f07469;
+    font-weight: bold;
+    padding: 5px;
+}
+.btn-booking > span, .btn-booking:hover > span, .btn-booking:active > span, .btn-booking:focus > span {
+    padding-left: 25px;
+    background: url('https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cate-booking.png') no-repeat scroll left center rgba(0, 0, 0, 0);
+    border-radius: 5px;
+}
+.btn-click-show{
+    float:left; 
+    color: honeydew;
+    border: 1px solid rgb(100, 97, 97);
+    margin-left: 10px; 
+    border-radius: 20px;
+    background-color: rgb(231, 228, 228);
+    font-size: 15px;
+    text-decoration: none;
+    :hover{
+        text-decoration: none;  
+        color: rgb(255, 29, 29);
+    }
+}
+#slideshow {
+   overflow: hidden;
+   height: 448px;
+   width: 980px;
+   margin: 0 auto;
+ }
+.slide-wrapper {
+   width: 3920px;
+   -webkit-animation: slide 12s ease infinite;
+ }
+.slide {
+   float: left;
+   height: 448px;
+   max-width:980px;
+ }
+@-webkit-keyframes slide {
+   20% {margin-left: 0px;}
+   30% {margin-left: -980px;}
+   50% {margin-left: -980px;}
+   60% {margin-left: -1960px;}
+   80% {margin-left: -1960px;}
+
+ }

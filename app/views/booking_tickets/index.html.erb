@@ -100,7 +100,7 @@ tr:nth-child(even) {
                   <%= b.total_price %>.000VND  
                 </td>
                 <td>
-                <%= link_to "Xem chi tiet" , booking_tickets_show_path(b.id) ,  class:"btn btn-primary"%>
+                <%= link_to "Xem chi tiet" , show_tickets_path(b.id) ,  class:"btn btn-primary"%>
                 </td>
               </tr>
             <% end %>

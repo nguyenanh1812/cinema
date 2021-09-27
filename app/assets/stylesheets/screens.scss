@@ -25,8 +25,32 @@ textarea {
   display: inline-block;
   vertical-align:middle;
   text-align: center;
-  
   background-color:#ccc;
+}
+
+.reddog input[type=checkbox]:before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+.reddog1 input[type=checkbox]:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-color: red;
+}
+.reddog2 input[type=checkbox]:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-color: green;
+}
+.reddog3 input[type=checkbox]:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-color: #ccc;
 }
 table {
   td {
@@ -53,4 +77,3 @@ table {
   border-right: 5px solid #d8d8d8;
   border-left: 5px solid #d8d8d8;
 }
-
