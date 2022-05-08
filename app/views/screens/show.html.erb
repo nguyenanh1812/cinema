@@ -6,10 +6,10 @@
       <div class="screen"><h2 style="text-align:center; border-bottom: 8px solid gray; width:40%;">Screen</h2></div>
       
       <div class="fuselage">
-        <table id="seatsBlock" >
+        <table id="seatsBlock" onclick="cap_nhat_luu_ghe()">
           <tr>
             <td></td>
-            
+             
             <% @seats.maximum("seat_number").times do |z| %>
               <td><span><%= z+1 %></span> </td>
             <% end %>
@@ -39,7 +39,6 @@
       <span style="margin-left: 10px;" class="reddog3"><input type="checkbox" disabled ><span style="margin-left: 5px;"> Ghế có thể đặt |</span></span>
       <span style="margin-left: 10px;" class="reddog2"><input type="checkbox" disabled ><span style="margin-left: 5px;"> Ghế bạn chọn </span></span>
     </center><br>
-    <button onclick="cap_nhat_luu_ghe()" class="btn btn-confirm">Lưu thông tin các ghế đã chọn</button>
   </center>
 </div>
 
@@ -56,8 +55,8 @@
 </div>
 
 <center><span>
-  <%= link_to "Xác nhận", booking_ticket_path(@show.id) , class:"btn btn-confirm" %>
-  <button  onclick="tai_lai_trang()" class="btn btn-confirm" >Hủy lưu </button> 
+  <span id="xacnhan" style="display: none;" ><%= link_to "Xác nhận", booking_ticket_path(@show.id) , class:"btn btn-confirm" %>
+  <button onclick="tai_lai_trang()" class="btn btn-confirm" >Hủy lưu </button> <span>
 </span> <center>
 
 <script type="text/javascript">
@@ -92,13 +91,19 @@ function cap_nhat_luu_ghe(){
     localStorage.setItem("list_seats", allSeatsVals);
     localStorage.setItem("list_seat_ids", allSeatsIds);
     
+    var x = document.getElementById("xacnhan");
+    if (x.style.display == "none" ) {
+      x.style.display = "block";
+    } else{
+      x.style.disabled = "none";
+    }
   }
   else
-  {
-    alert("Hãy chọn chỗ ngồi trước!")
-  }
+    {
+      location.reload();
+    }
+  
 }
-
 </script>
 
 

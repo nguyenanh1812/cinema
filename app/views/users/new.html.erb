@@ -56,6 +56,15 @@
 
             <%= f.label :Số_điện_thoại %>
             <%= f.text_field :phonenum, class:'form-control', placeholder: "Số điện thoại "  %>
+
+            <!--#Thong bao loi validate phone-->
+            <% if @user.errors.include?(:phonenum) %>
+                <div class="alert alert-danger">
+                <% @user.errors.full_messages_for(:phonenum).each do |error_message| %>
+                    <%= error_message %><br>
+                <% end %>
+                </div>
+            <% end %>
             
            <!-- ##phan code tich chon-->
            <%= f.label :Ngày_sinh%>
@@ -78,11 +87,10 @@
             <%= f.select :city, options_for_select(["Hồ Chí Minh","Hà Nội","Hải Phòng","Đà Nẵng"]) %>
                             
             <%= f.label :favorite_cinema, "Rạp yêu thích" %>
-            <%= f.select :favorite_cinema, options_for_select(["CGV Aeon Canary","CGV Aeon Ha Dong","CGV Aeon Hai Phong","CGV Aeon Long Bien","CGV Aeon Tan Phu",
-            "CGV Big C Dong Nai","CGV Aeon Mall Binh Tan","CGV Big C My Tho"]) %>
+            <%= f.select :favorite_cinema, options_for_select(["Beta Thanh Xuân","Beta Mỹ Đình","Beta Đan Phượng","Beta Giải Phóng","Beta Biên Hòa", "Beta Long Khánh","Beta Long Thành","Beta Long Xuyên", "Beta Thái Nguyên", "Beta Thanh Hóa", "Beta Bắc Giang", "Beta Nha Trang", "Beta Quang Trung"]) %>
             </div>
 
-            <input type="checkbox" value="ok" > Tôi đồng ý với <a href="">Điều Khoản Sử Dụng của CGV</a>                        
+            <input type="checkbox" value="ok" > Tôi đồng ý với <a href="">Điều Khoản Sử Dụng của Beta Cineplex</a>                        
 
             <%= f.submit "Sign Up", class: "btn btn-primary btn-lg btn-block" %>
         <% end %>

@@ -9,7 +9,9 @@ class User < ApplicationRecord
 	validates :email, presence: true, length: { maximum: 255 },
 							format: { with: VALID_EMAIL_REGEX }, #email phai co dang kytu@.kytu
 							uniqueness: { case_sensitive: false } #Tinh duy nhat cua email khong phan biet chu hoa chu thuong
-							
+	validates :phonenum,presence: true,
+                 numericality: true,
+                 length: {is: 10}
 
 	has_secure_password  # them mat khau bao mat la ham bam
 	validates :password, presence: true, length: { minimum: 6 },  allow_nil: true # them dieu kien mat khau toi thieu 6

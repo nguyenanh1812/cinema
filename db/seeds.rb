@@ -8,14 +8,15 @@
 User.create!(name: "Admin",
             email: "admin@gmail.com",
             password:"123456",
+            phonenum: 1231231231,
             admin: true,
             activated: true,
             activated_at: Time.zone.now)
 
 Screen.create!(name:"phong 1", total_seat: 50)
-Show.create!(movie_id: 2, screen_id: 1, start_time:'13:00'  , end_time: '15:20', date: '2021-9-30' )
-Show.create!(movie_id: 2, screen_id: 1, start_time:'18:00'  , end_time: '20:20', date: '2021-9-30' )
-Show.create!(movie_id: 2, screen_id: 1, start_time:'10:00'  , end_time: '12:20', date: '2021-9-30' )
+Show.create!(movie_id: 2, screen_id: 1, start_time:'13:00'  , end_time: '15:20', date: '2022-9-30' )
+Show.create!(movie_id: 2, screen_id: 1, start_time:'18:00'  , end_time: '20:20', date: '2022-9-30' )
+Show.create!(movie_id: 2, screen_id: 1, start_time:'10:00'  , end_time: '12:20', date: '2022-9-30' )
 5.times do |x|
     10.times do |z|
       CinenmaSeat.create(row: x+1, seat_number: z+1, screen_id: 1, price: 100)
