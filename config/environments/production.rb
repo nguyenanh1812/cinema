@@ -17,7 +17,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   config.action_mailer.default_url_options = 
-      { :host => 'booking-tickets1409.herokuapp.com/' } 
+      { :host => 'booking-tickets14092.herokuapp.com' } 
       #{ :host => 'heroku-test-rails.herokuapp.com' } 
   #Gui mail xac nhan tai khoan
   config.action_mailer.delivery_method = :smtp
