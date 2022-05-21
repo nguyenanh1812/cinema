@@ -20,6 +20,17 @@
 
 <br>
 <h1>Phim Đang Chiếu</h1>
+
+<%= search_form_for @q, url: :movie_index do |f| %>
+ 
+  
+  <%= f.label :Movie_Name %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.submit %>
+
+<% end %>
+
 <div style="border-bottom: 4px solid black; border-width:80%;">
 </div><br>
 
