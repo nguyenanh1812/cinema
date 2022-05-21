@@ -1,3 +1,3 @@
 class SeatType < ApplicationRecord
-    has_many :seats
+  has_many :seats
 end

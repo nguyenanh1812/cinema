@@ -12,25 +12,20 @@
 <!-- search-->
 <div class="search-wrapper">
     <div class="input-holder">
-        <input type="text" class="search-input" placeholder="Type to search" />
-        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+        <!--<input type="text" class="search-input" placeholder="Type to search" />-->
+        <%= search_form_for @q, url: :movie_index do |f| %>
+          <!--<%= f.label :Movie_Name %>-->
+          <%= f.search_field :name_cont , class:"search-input", placeholder:"Search by movie name" %>
+          <!-- <%= f.submit %> -->
+          <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+        <% end %> 
+        
     </div>
     <span class="close" onclick="searchToggle(this, event);"></span>
 </div>
 
 <br>
 <h1>Phim Đang Chiếu</h1>
-
-<%= search_form_for @q, url: :movie_index do |f| %>
- 
-  
-  <%= f.label :Movie_Name %>
-  <%= f.search_field :name_cont %>
-
-  <%= f.submit %>
-
-<% end %>
-
 <div style="border-bottom: 4px solid black; border-width:80%;">
 </div><br>
 
