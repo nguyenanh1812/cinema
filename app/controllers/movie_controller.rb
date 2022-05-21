@@ -3,7 +3,11 @@ class MovieController < ApplicationController
   end
   
   def index 
-    @pagy, @movies = pagy(Movie.all, items: 9)
+    #@pagy, @movies = pagy(Movie.all, items: 9)
+    
+    @q = Movie.ransack(params[:q])
+    @pagy, @movies = pagy(@q.result(distinct: true), items: 9)
+
   end
   
   def show
