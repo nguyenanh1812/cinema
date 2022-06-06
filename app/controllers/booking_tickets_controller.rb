@@ -19,6 +19,7 @@ class BookingTicketsController < ApplicationController
   end
 
   def create
+    #binding.pry
     @booking_ticket = BookingTicket.new(booking_params)
     @booking_ticket.status = true
 
@@ -46,6 +47,12 @@ class BookingTicketsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking_ticket).permit(:user_id, :seat_quantity, :total_price, :creat_at, :show_id, :seats_name)
+    {
+      user_id: params[:booking_ticket][:user_id],
+      seat_quantity: params[:booking_ticket][:seat_quantity],
+      total_price: params[:booking_ticket][:total_price],
+      show_id: params[:booking_ticket][:show_id],
+      seats_name: params[:booking_ticket][:seats_name]
+    }
   end
 end

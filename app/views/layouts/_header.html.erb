@@ -6,6 +6,7 @@
             
             <% if logged_in? %>               
                 <!--<li><%= link_to "Settings", edit_user_path(current_user) %></li>-->
+                <% if current_user.admin == true %> <li><%= link_to "Add movie", new_movie_path %></li><% end %>
                 <li><%= link_to "Vé Của Tôi",booking_tickets_index_path %></li>
                 <li><%= link_to "List Phim đang chiếu", movie_index_path %></li>
                 <li><%= link_to "Profile", current_user %></li>
@@ -24,7 +25,7 @@
             <ul class="parent">
                  <li>
                    <!--#<a href="/" class="logo"><img src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png"></a>-->
-                   <!--<a href="/">-->
+                   <a href="/">
                    <img alt="" style="height: 55px; margin-top: 20px" src="https://betacinemas.vn/Assets/Common/logo/logo.png">
                    <!--</a>-->
                 </li>

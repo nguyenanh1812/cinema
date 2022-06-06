@@ -58,4 +58,13 @@ module SessionsHelper
   def store_location
     session[:forwarding_url] = request.original_url if request.get?
   end
+
+  #xet xem co phai admin
+  def admin_user
+    if current_user.admin?
+      flash.now[:success] = "Admin Access Granted"
+    else
+      redirect_to root_path
+    end
+  end
 end

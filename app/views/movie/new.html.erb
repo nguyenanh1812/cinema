@@ -1,3 +1,52 @@
 <h1>Movie#new</h1>
 <p>Find me in app/views/movie/new.html.erb</p>
 
+
+
+
+<%= form_with(model: @movie, url: movie_new_path )  do |form| %>
+  <div class="width-add-p ">
+
+    <div class="form-group">
+      <%= form.label :name, "Name*" %>
+      <%= form.text_field :name, class:"form-control", placeholder: "Name"%>
+    </div>
+    <div class="form-group">
+      <%= form.label :title, "Title*" %>
+      <%= form.text_field :title, class:"form-control", placeholder: "Title"%>
+    </div>
+    <div class="form-group">
+      <%= form.label :time, "Time*" %>
+      <%= form.text_field :time, class:"form-control", placeholder: "Time"%>
+    </div>
+    <div class="form-group">
+      <%= form.label :cast, "Cast*" %>
+      <%= form.text_field :cast, class:"form-control", placeholder: "Cast"%>
+    </div>
+    <div class="form-group">
+      <%= form.label :designation, "Description" %>
+      <%= form.text_field :designation, class:"form-control", placeholder: "Description"%>
+    </div>
+    <div class="form-group">
+      <%= form.label :release, "Release*" %>
+      <%= form.date_field :release, class:"form-control", placeholder: "Release"%>
+    </div>  
+    <div class="form-group">
+      <%= form.label :image_link, "Image_Link*" %>
+      <%= form.text_field :image_link, class:"form-control", placeholder: "Image Link"%>
+    </div>
+    <div class="select-20">
+      <%= form.label :genre, "Genre" %>
+      <%= form.collection_select(:genre_id, Genre.all, :id, :name) %>
+    </div>
+  </div>
+  <div style="padding-top: 8px;"></div>
+  <div class="cata-border-add-x"></div>
+  <div style="padding-left: 5%; padding-bottom: 20px;">
+  <%= form.submit "Save", class: "btn btn-success btn-sm", style:"width: 50px" , id:"btnSave"%>
+<% end -%>
+
+<%= link_to movie_index_path do %>	
+  <button type="button" class="btn btn-secondary btn-sm"> Back</button>	
+<% end %>			
+</div>
