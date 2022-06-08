@@ -1,5 +1,19 @@
 <title>Chon ghe</title>
 
+<h2> Hãy chọn chỗ ngồi cho xuất chiếu </h2>
+<b><%= @show.get_movie.name %> </b>
+<span style="margin-left: 20px;">  Thời gian: </span>
+<b><%= @show.date.strftime("%d/%m")%></b>
+<b><%= ':' + @show.start_time + ' - ' %></b>
+<b><%= @show.end_time %></b><span style="margin-left: 20px;">  Phòng chiếu: </span>
+<b><%= @show.screen_id %></b>
+<button style="margin-left: 30%", class="btn btn-info" type="submit"> 
+  <%= link_to movie_path(@show.get_movie.id) do %> 
+      <span> Quay lai </span>
+  <% end %>
+</button>
+<hr>
+
   <div class="seatStructure">
     <center>
       <p id="notification"></p>

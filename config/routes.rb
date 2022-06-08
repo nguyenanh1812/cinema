@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'booking_tickets/index'
   get 'shows/index'
   get 'movie/new'
+  post 'movie/new', to: 'movie#create'
   # get 'movie/show'
   get 'movie/index'
 

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
-  before_action :logged_in_user, only: %i[index edit update]
-  before_action :correct_user, only: %i[edit update] # Update dung nguoi dung dang dang nhap
-
+  before_action :set_user, only: %i[ edit update destroy]
+  before_action :logged_in_user, only: %i[ edit update]
+  before_action :correct_user, only: %i[show edit update] # Update dung nguoi dung dang dang nhap
+  before_action :admin_user, only: [:index]
   def index
     # @users = User.all
     @pagy, @users = pagy(User.all, items: 5)
