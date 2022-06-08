@@ -10,6 +10,7 @@ gem 'bcrypt', '3.1.13'
 gem 'bootstrap-sass', '3.4.1'
 gem 'pg', '~> 1.1'
 gem 'ransack'
+gem 'stripe'
 
 # rubocop fix style ruby
 gem 'rubocop'

@@ -1,3 +1,7 @@
 <li>
-   <%= link_to user.name, user %>  -Email: <%= user.email %>  -SDT: <%= user.phonenum %> -BirthDay: <%= user.day %>/  <%= user.month %>/ <%= user.year %>  
+   <%= link_to user.name, user %>  -Email: <%= user.email %>  -SDT: <%= user.phonenum %> -BirthDay: <%= user.day %>/  <%= user.month %>/ <%= user.year %> 
+   <% if current_user.admin? && !current_user?(user) %>
+   | <%= link_to "delete", user, method: :delete,
+                    data: { confirm: "You sure?" } %>
+   <% end %> 
 </li>

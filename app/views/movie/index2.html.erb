@@ -36,6 +36,13 @@
     <li><strong>Thời lượng: </strong><%= movie.time %>   </li>
     <li><strong>Khởi chiếu: </strong><%= movie.release %>   </li>
     <li><strong>Thể loại: <strong><%= movie.genre.name %> </li>
+    <li>
+    <% if current_user.admin == true %>
+      | <%= link_to "delete", movie, method: :delete,
+                    data: { confirm: "You sure?" } %> |
+    <% end %> 
+    <%= link_to 'Edit', edit_movie_path(movie) %> 
+    </li>
     <br>
     </div>
 <% end %>

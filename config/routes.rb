@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   post 'movie/new', to: 'movie#create'
   # get 'movie/show'
   get 'movie/index'
+  get 'movie/index2'
+  patch '/movie/:id', to: 'movie#update', as: 'update_movie'
+
+  get 'users/index'
 
   get 'errors/not_found'
   get 'errors/internal_server_error'
