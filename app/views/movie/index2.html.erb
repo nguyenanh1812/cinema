@@ -25,7 +25,10 @@
 </div>
 
 <br>
-<h1>Phim Đang Chiếu</h1>
+<h1 style="margin-left: 10px;display: inline;" >Phim Đang Chiếu</h1>
+<%= link_to new_movie_path do %>
+  <button style="float:right;margin-right: 30px ;" type="button" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add New Movie</button>
+<% end -%>
 <div style="border-bottom: 4px solid black; border-width:80%;">
 </div><br>
 
@@ -38,10 +41,13 @@
     <li><strong>Thể loại: <strong><%= movie.genre.name %> </li>
     <li>
     <% if current_user.admin == true %>
-      | <%= link_to "delete", movie, method: :delete,
-                    data: { confirm: "You sure?" } %> |
+        <%= link_to edit_movie_path(movie) do %>
+          <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i> Edit</button>
+        <% end %> 
+        <%= link_to movie, method: :delete, data: { confirm: "You sure?" } do %> 
+          <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+        <% end %>
     <% end %> 
-    <%= link_to 'Edit', edit_movie_path(movie) %> 
     </li>
     <br>
     </div>

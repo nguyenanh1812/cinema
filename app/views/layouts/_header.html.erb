@@ -4,13 +4,12 @@
             <li><a href="#">tuyển dụng</a></li>
             <li><a href="#">Tin mới & Ưu đãi</a></li>
             
-            <% if logged_in? %>               
-                <!--<li><%= link_to "Settings", edit_user_path(current_user) %></li>-->
+            <% if logged_in? %>    
                 <% if current_user.admin == true %> 
-                    <li><%= link_to "Add movie", new_movie_path %></li>
-                    <li><%= link_to "Customer", users_index_path %></li>
-                    <li><%= link_to "List Phim", movie_index2_path %></li>
-                <% end %>
+                    <li><%= link_to "Khach Hang", users_index_path %></li>
+                    <li><%= link_to "Quan Ly Phim", movie_index2_path %></li>
+                <% end %>           
+                <!--<li><%= link_to "Settings", edit_user_path(current_user) %></li>-->
                 <li><%= link_to "Vé Của Tôi",booking_tickets_index_path %></li>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "thoát", logout_path, method: :delete %></li>

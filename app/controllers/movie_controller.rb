@@ -46,7 +46,7 @@ class MovieController < ApplicationController
     @movie = Movie.new(movie_params)
     if @movie.save
       flash[:success] = "Movie created!"
-      redirect_to movie_index_path
+      redirect_to movie_index2_path
     else
       redirect_to movie_new_path
     end
