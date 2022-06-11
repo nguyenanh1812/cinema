@@ -1,0 +1,64 @@
+<table>
+    <tr>
+        <th>Mã khách hàng </th>
+        <th>Ngay giao dich </th>    
+        <th>Ma giao dich </th>
+        <th>Phim chieu  </th>
+        <th>So luong ghe </th>
+        <th>Tong thanh toan </th>
+        <th>Chi tiet </th>
+    </tr>
+    <% @booking_tickets.each do |b| %>
+        <tr> 
+            <td><%= b.user_id %>
+            </td>
+            <td>
+                <%= b.created_at.strftime("%d/%m/%Y") %>   
+            </td>
+            <td>
+                <%= b.id %>   
+            </td>
+            <td>
+            <% @shows.each do |show| %>
+                <% if show.id == b.show_id %>
+                <% @movies.each do |movie| %>
+                    <% if movie.id == show.movie_id %>
+                    <%= movie.title %>
+                    <% end %>
+                <% end %>
+                <% end %>
+            <% end %>
+                <%= b.show_id %>   
+            </td>
+            <td>
+                <%= b.seat_quantity %>: <%= b.seats_name %> 
+            </td>
+            <td>
+                <%= b.total_price %>.000VND  
+            </td>
+            <td>
+            <%= link_to "Xem chi tiet" , show_tickets_path(b.id) ,  class:"btn btn-primary"%>
+            <%= link_to delete_ticket_path(b), method: :delete, data: { confirm: "You sure?" } do %> 
+                <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+            <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+
+<style>
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+    tr:nth-child(even) {
+    background-color: #dddddd;
+    }
+</style>

@@ -1,8 +1,22 @@
 class BookingTicketsController < ApplicationController
+  before_action :admin_user, only: %i[index2 destroy]
   def index
     @booking_ticket = BookingTicket.where(user_id: current_user.id)
     @shows = Show.all
     @movies = Movie.all
+  end
+
+  def index2
+    @booking_tickets = BookingTicket.all
+    @shows = Show.all
+    @movies = Movie.all
+    #@users = User.all
+  end
+
+  def destroy
+    BookingTicket.find(params[:id]).destroy
+    flash[:success] = "Ticket deleted"
+    redirect_to ticket_list_path
   end
 
   def show

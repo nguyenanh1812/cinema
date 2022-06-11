@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'show/new'
   get 'screen/new'
-  get 'genre/new'
+  #get 'genre/new'
   get 'screens/Show'
   # get 'booking_tickets/show'
   get '/booking_tickets/show/:id', to: 'booking_tickets#show', as: 'show_tickets'
@@ -27,9 +27,7 @@ Rails.application.routes.draw do
   root 'movie#index'
   resources :users
   resources :movie
-  resources :genre
   resources :booking_tickets
-  resources :screens
   resources :shows
   resources :account_activations, only: [:edit]
 
@@ -41,6 +39,27 @@ Rails.application.routes.draw do
 
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
+
+  #admin-url
+  #Shows
+  post 'shows/new', to: 'shows#create'
+  delete '/shows/:id', to: 'shows#destroy', as: 'delete_show'
+  patch '/shows/:id', to: 'shows#update', as: 'update_show' 
+  get '/shows/:id/edit', to: 'shows#edit', as: 'edit_shows'
+
+  resources :genre
+  post 'genre/new', to: 'genre#create'
+  #get '/genre/:id', to: 'genre#update', as: 'update_genre' 
+  patch 'genre/:id/edit', to: 'genre#update', as: 'update_genre'
+  
+  resources :screens
+  post 'screens/new', to: 'screens#create'
+  patch '/screens/:id/edit', to: 'screens#update', as: 'update_screen'
+  delete '/screens/:id', to: 'screens#destroy', as: 'delete_screen'
+
+  #ticket
+  get '/booking_tickets/admin/index2', to: 'booking_tickets#index2', as: 'ticket_list'
+  delete '/booking_tickets/destroy/:id', to: 'booking_tickets#destroy', as: 'delete_ticket'
 
   #payment
   post "checkout/create", to: "checkout#create"

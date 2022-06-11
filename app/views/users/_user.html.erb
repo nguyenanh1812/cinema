@@ -1,8 +1,29 @@
-<li>
-   <%= link_to user.name, user %>  -Email: <%= user.email %>  -SDT: <%= user.phonenum %> -BirthDay: <%= user.day %>/  <%= user.month %>/ <%= user.year %> 
-   <% if current_user.admin? && !current_user?(user) %>
-   |  <%= link_to user, method: :delete, data: { confirm: "You sure?" } do %>
-         <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
-      <% end %>
-   <% end %> 
-</li>
+<table>
+   <tr>
+      <td>
+         <%= link_to user.name, user %>  -Email: <%= user.email %>  -SDT: <%= user.phonenum %> -BirthDay: <%= user.day %>/  <%= user.month %>/ <%= user.year %> 
+      </td>
+      <td>
+         <% if current_user.admin? && !current_user?(user) %>
+           <%= link_to user, method: :delete, data: { confirm: "You sure?" } do %>
+               <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+            <% end %>
+         <% end %>
+      </td>
+   </tr> 
+</table>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+      }
+</style>

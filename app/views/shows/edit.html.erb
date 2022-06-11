@@ -1,0 +1,35 @@
+<title>Update Show</title>
+
+<%= form_with(model: @show, url: update_show_path) do |f| %>
+    <div style="padding-left: 50px; padding-right: 50px; ">
+        <div class="form-group">
+            <%= f.label :movie_id, "Movie" %>
+            <%= f.number_field :movie_id, class:"form-control", placeholder: "Movie name"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :screen_id, "Screen" %>
+            <%= f.number_field :screen_id, class:"form-control", placeholder: "Screen"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :date, "Date" %>
+            <%= f.date_field :date, class:"form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :start_time, "Start time" %>
+            <%= f.text_field :start_time, class:"form-control", placeholder: "Start tiem"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :end_time, "End time" %>
+            <%= f.text_field :end_time, class:"form-control", placeholder: "End time"%>
+        </div>
+    </div>
+    <div style="padding-top: 8px;"></div>
+    <div class="cata-border-add-x"></div>
+    <div style="padding-left: 5%; padding-bottom: 20px; float:left;">
+    <%= f.submit "Save", class: "btn btn-success btn-sm", style:"width: 50px" %></div>
+<% end %>
+<div style="padding-left: 1%; padding-bottom: 20px; display: inline;">
+<%= link_to shows_path do %>	
+    <button type="button" class="btn btn-secondary btn-sm"> Close</button>	
+<% end -%>	
+</div>	
