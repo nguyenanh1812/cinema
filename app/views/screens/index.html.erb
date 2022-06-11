@@ -1,0 +1,33 @@
+<title>List Screen</title>
+<br>
+<h1 style="margin-left: 10px;display: inline;">Ds Phong chieu</h1> 
+<%= link_to new_screen_path do %>
+  <button style="float:right;margin-right: 30px ;" type="button" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add New Genre</button>
+<% end -%>
+<div style="border-bottom: 4px solid black; border-width:80%;">
+</div><br>
+<table style="width: 1000px;"> 
+<% @screens.each do |screen| %>
+  <tr style="border: 1px solid black;">  
+  <td style="border: 1px solid black;" ><%= screen.id %> </td>
+  <td style="border: 1px solid black;"><strong><%= screen.name %></strong></td>
+  <td style="border: 1px solid black;">
+  <% if screen.id > 1 %>
+    <%= link_to edit_screen_path(screen.id) do %>
+      <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i> Edit</button>
+    <% end %> 
+  <% else %>
+    <button type="button" class="btn btn-warning btn-sm" disabled><i class="fas fa-pencil-alt"></i> Edit</button>  <% end %>
+  </td>
+  <td>
+    <% if screen.id > 1 %>
+    <%= link_to delete_screen_path(screen.id), method: :delete, data: { confirm: "You sure?" } do %> 
+      <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+    <% end %>
+    <% else %>
+      <button type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-times"></i> Delete</button>
+    <% end %>
+  </td>
+  </tr>
+<% end %>
+</table>

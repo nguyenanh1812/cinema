@@ -1,0 +1,22 @@
+<title>List genre</title>
+<br>
+<h1 style="margin-left: 10px;display: inline;">The loai phim</h1> 
+<%= link_to new_genre_path do %>
+  <button style="float:right;margin-right: 30px ;" type="button" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add New Genre</button>
+<% end -%>
+<div style="border-bottom: 4px solid black; border-width:80%;">
+</div><br>
+<table style="width: 1000px;"> 
+<% @genres.each do |genre| %>
+  <tr style="border: 1px solid black;">  
+  <td style="border: 1px solid black;" ><%= genre.id %> </td>
+  <td style="border: 1px solid black;"><strong><%= genre.name %></strong></td>
+  <td style="border: 1px solid black;"><%= link_to edit_genre_path(genre) do %>
+    <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i> Edit</button>
+  <% end %> </td>
+  <td><%= link_to genre, method: :delete, data: { confirm: "You sure?" } do %> 
+    <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+  <% end %></td>
+  </tr>
+<% end %>
+</table>

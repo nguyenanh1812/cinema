@@ -8,7 +8,7 @@ class MovieController < ApplicationController
   def destroy
     Movie.find(params[:id]).destroy
     flash[:success] = "Movie deleted"
-    redirect_to movie_index_path
+    redirect_to movie_index2_path
   end
 
   def index
@@ -24,6 +24,7 @@ class MovieController < ApplicationController
   end
   
   def edit
+    @movie = Movie.find(params[:id])
   end
 
   def update
