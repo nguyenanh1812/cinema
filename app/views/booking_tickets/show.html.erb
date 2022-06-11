@@ -6,7 +6,7 @@
     </div>
     <div>
         <h3> Tên phim: <b><%= @movie.title %></b></h3>
-        <h4 style="margin-top:20px"> Mã giao dịch: <%= @booking_ticket.id %> <span style="margin-left:100px"> Ngày đặt: <%= @booking_ticket.creat_at.strftime("%d/%m/%Y") %> </span></h4>
+        <h4 style="margin-top:20px"> Mã giao dịch: <%= @booking_ticket.id %> <span style="margin-left:100px"> Ngày đặt: <%= @booking_ticket.created_at.strftime("%d/%m/%Y") %> </span></h4>
         <div style="margin-top:20px">
             <p> Rap phim: CGV Aeon </p>
             <span> Ngày chiếu: <%= @show.date.strftime("%d/%m/%Y") %></span>

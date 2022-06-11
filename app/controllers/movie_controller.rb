@@ -1,8 +1,14 @@
 class MovieController < ApplicationController
-  before_action :admin_user, only: [:new]
+  before_action :admin_user, only: %i[:new index2 update destroy]
   def new
     @movie = Movie.new
     @movie_genre = Genre.all
+  end
+
+  def destroy
+    Movie.find(params[:id]).destroy
+    flash[:success] = "Movie deleted"
+    redirect_to movie_index_path
   end
 
   def index
@@ -10,6 +16,24 @@ class MovieController < ApplicationController
 
     @q = Movie.ransack(params[:q])
     @pagy, @movies = pagy(@q.result(distinct: true), items: 9)
+  end
+  
+  def index2
+    @q = Movie.ransack(params[:q])
+    @pagy, @movies = pagy(@q.result(distinct: true), items: 9)
+  end
+  
+  def edit
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    if @movie.update(movie_params)
+      flash[:success] = "Update successfully!"
+      redirect_to movie_index2_path
+    else
+      render 'edit'
+    end
   end
 
   def show
@@ -21,7 +45,8 @@ class MovieController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to movie_index_path
+      flash[:success] = "Movie created!"
+      redirect_to movie_index2_path
     else
       redirect_to movie_new_path
     end

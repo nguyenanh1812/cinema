@@ -4,11 +4,13 @@
             <li><a href="#">tuyển dụng</a></li>
             <li><a href="#">Tin mới & Ưu đãi</a></li>
             
-            <% if logged_in? %>               
+            <% if logged_in? %>    
+                <% if current_user.admin == true %> 
+                    <li><%= link_to "Khach Hang", users_index_path %></li>
+                    <li><%= link_to "Quan Ly Phim", movie_index2_path %></li>
+                <% end %>           
                 <!--<li><%= link_to "Settings", edit_user_path(current_user) %></li>-->
-                <% if current_user.admin == true %> <li><%= link_to "Add movie", new_movie_path %></li><% end %>
                 <li><%= link_to "Vé Của Tôi",booking_tickets_index_path %></li>
-                <li><%= link_to "List Phim đang chiếu", movie_index_path %></li>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "thoát", logout_path, method: :delete %></li>
 
@@ -24,20 +26,16 @@
         <div class="menu-header">
             <ul class="parent">
                  <li>
-                   <!--#<a href="/" class="logo"><img src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png"></a>-->
-                   <a href="/">
-                   <img alt="" style="height: 55px; margin-top: 20px" src="https://betacinemas.vn/Assets/Common/logo/logo.png">
-                   <!--</a>-->
+                   <a href="/"><img alt="" style="height: 55px; margin-top: 20px" src="https://betacinemas.vn/Assets/Common/logo/logo.png"></a>
                 </li>
                 <li style= "margin-top: 40px;">
-                    <div class="dropdown">
-                            phim
+                    <div class="dropdown">phim
                         <div class="dropdown-content">
                             <a href="/">Phim đang chiếu</a>
                             <a href="#">Phim sắp chiếu</a>
                         </div>
                     </div>
-                </li>
+                </li> 
                 <li style= "margin-top: 40px;">
                     <div class="dropdown">
                         rạp cgv

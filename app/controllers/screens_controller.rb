@@ -9,4 +9,20 @@ class ScreensController < ApplicationController
     seat_reserveds = CinenmaSeat.includes(:seat_reserveds).where(seat_reserveds: { show_id: @show.id })
     @seat_reserveds_ids = seat_reserveds.pluck(:id)
   end
+
+  def new
+  end
+  
+  def index
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def create
+  end
+
 end

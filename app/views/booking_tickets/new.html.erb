@@ -27,9 +27,11 @@
   <span><%= f.submit "Thanh toan", class: "btn btn-primary "%>
   <%= link_to "Huy", root_path, class:"btn btn-primary" %> </span>
 <% end %>  
+  <%= link_to "Buy now!", checkout_create_path, params: {id: @booking_ticket.id}, remote: true %>
+  <%= button_to "Buy now!", checkout_create_path, remote: true, data: { disable_with: "validating..."} %>
 
 <script>
-  var all_number_seat = localStorage.getItem("all_number_seat");
+  var all_number_seat = localStorage.getItem("all_number_seat") - 1;
   var total_price = localStorage.getItem("total_price");
   var list_seats = localStorage.getItem("list_seats");
   var list_seat_ids = localStorage.getItem("list_seat_ids");
