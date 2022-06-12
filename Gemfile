@@ -11,6 +11,8 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'pg', '~> 1.1'
 gem 'ransack'
 gem 'stripe'
+gem 'paypal-sdk-rest'
+gem 'bootstrap-datepicker-rails'
 
 # rubocop fix style ruby
 gem 'rubocop'

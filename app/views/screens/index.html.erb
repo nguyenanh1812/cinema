@@ -1,4 +1,25 @@
-<title>List Screen</title>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>List Screen</title>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+      }
+  </style>
+</head>
+<body>
 <br>
 <h1 style="margin-left: 10px;display: inline;">Ds Phong chieu</h1> 
 <%= link_to new_screen_path do %>
@@ -6,28 +27,51 @@
 <% end -%>
 <div style="border-bottom: 4px solid black; border-width:80%;">
 </div><br>
-<table style="width: 1000px;"> 
+<table style="width: 100%;">
+<tr>
+  <th>
+    <%= sort_link(@q, :id) do %>
+      <strong style="color:black;"> MA phong</strong>
+    <% end %>
+  </th>
+  <th>
+    <%= sort_link(@q, :name) do %>
+        <strong style="color:black;">Ten Phong</strong>
+    <% end %>
+  </th>
+  <th>
+    <div style="float:right;margin-right:5%"> 
+      <div class="form-inline my-2 my-lg-0">
+          <%= search_form_for @q, url: screens_path do |f| %>
+          <%= f.search_field :name_cont, placeholder: "Screen Name ...", class:"search-field form-control"%>
+          <%= f.submit "Search", class: "btn-success btn-sm btn" %>
+        <% end -%>
+        </div>
+    </div>
+  </th>
+</tr>
 <% @screens.each do |screen| %>
-  <tr style="border: 1px solid black;">  
-  <td style="border: 1px solid black;" ><%= screen.id %> </td>
-  <td style="border: 1px solid black;"><strong><%= screen.name %></strong></td>
-  <td style="border: 1px solid black;">
-  <% if screen.id > 1 %>
-    <%= link_to edit_screen_path(screen.id) do %>
-      <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i> Edit</button>
-    <% end %> 
-  <% else %>
-    <button type="button" class="btn btn-warning btn-sm" disabled><i class="fas fa-pencil-alt"></i> Edit</button>  <% end %>
-  </td>
-  <td>
+  <tr>  
+    <td><%= screen.id %> </td>
+    <td><strong><%= screen.name %></strong></td>
+    <td>
     <% if screen.id > 1 %>
-    <%= link_to delete_screen_path(screen.id), method: :delete, data: { confirm: "You sure?" } do %> 
-      <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
-    <% end %>
+      <%= link_to edit_screen_path(screen.id) do %>
+        <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i> Edit</button>
+      <% end %> 
     <% else %>
-      <button type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-times"></i> Delete</button>
+      <button type="button" class="btn btn-warning btn-sm" disabled><i class="fas fa-pencil-alt"></i> Edit</button>  
     <% end %>
-  </td>
+      <% if screen.id > 1 %>
+        <%= link_to delete_screen_path(screen.id), method: :delete, data: { confirm: "You sure?" } do %> 
+          <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+        <% end %>
+      <% else %>
+        <button type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-times"></i> Delete</button>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
+</body>
+</html>

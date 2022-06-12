@@ -61,6 +61,10 @@ Rails.application.routes.draw do
   get '/booking_tickets/admin/index2', to: 'booking_tickets#index2', as: 'ticket_list'
   delete '/booking_tickets/destroy/:id', to: 'booking_tickets#destroy', as: 'delete_ticket'
 
-  #payment
+  #payment-script-DaFail
   post "checkout/create", to: "checkout#create"
+
+  #Payment-Paypal
+  resources :payments
+
 end

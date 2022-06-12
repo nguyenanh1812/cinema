@@ -3,12 +3,12 @@
 <%= form_with(model: @show, url: new_show_path) do |f| %>
     <div style="padding-left: 50px; padding-right: 50px; ">
         <div class="form-group">
-            <%= f.label :movie_id, "Movie" %>
-            <%= f.number_field :movie_id, class:"form-control", placeholder: "Movie name"%>
+            <%= f.label :movie, "Movie" %>
+            <%= f.collection_select(:movie_id, Movie.all, :id, :name) %>
         </div>
         <div class="form-group">
             <%= f.label :screen_id, "Screen" %>
-            <%= f.number_field :screen_id, class:"form-control", placeholder: "Screen"%>
+            <%= f.collection_select(:screen_id, Screen.all, :id, :name)%>
         </div>
         <div class="form-group">
             <%= f.label :date, "Date" %>
@@ -33,3 +33,10 @@
     <button type="button" class="btn btn-secondary btn-sm"> Close</button>	
 <% end -%>	
 </div>	
+
+<style type="text/css">
+	.form-group select{
+		width: 100%;
+		height: 30px;
+	}
+</style>
