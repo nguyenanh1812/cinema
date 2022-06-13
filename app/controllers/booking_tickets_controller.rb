@@ -7,7 +7,8 @@ class BookingTicketsController < ApplicationController
   end
 
   def index2
-    @booking_tickets = BookingTicket.all
+    @q = BookingTicket.ransack(params[:q])
+    @booking_tickets = @q.result(distinct: true)
     @shows = Show.all
     @movies = Movie.all
     #@users = User.all
@@ -35,7 +36,7 @@ class BookingTicketsController < ApplicationController
   def create
     #binding.pry
     @booking_ticket = BookingTicket.new(booking_params)
-    @booking_ticket.status = true
+    @booking_ticket.status = false
 
     list_seat_ids = params[:booking_ticket][:seats_ids]
     
@@ -47,7 +48,7 @@ class BookingTicketsController < ApplicationController
         @seat_reserved.cinenma_seat_id = list_ids[index].to_i # list_seat_ids[index]
         @seat_reserved.show_id = @booking_ticket.show_id
         @seat_reserved.booking_ticket_id = @booking_ticket.id
-        @seat_reserved.status = true
+        @seat_reserved.status = false
         @seat_reserved.save
       end
       flash[:info] = 'Bạn đã đặt vé thành công!'

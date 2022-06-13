@@ -1,9 +1,6 @@
-<h1>Movie#new</h1>
-<p>Find me in app/views/movie/new.html.erb</p>
-
-
-
-
+<title>Add new movie</title>
+<h1>Add Movie</h1>
+<hr>
 <%= form_with(model: @movie, url: movie_new_path )  do |form| %>
   <div class="width-add-p ">
 
@@ -42,7 +39,7 @@
       <%= form.label :image_link, "Image_Link*" %>
       <%= form.text_field :image_link, class:"form-control", placeholder: "Image Link"%>
     </div>
-    <div class="select-20">
+    <div class="form-group" >
       <%= form.label :genre, "Genre" %>
       <%= form.collection_select(:genre_id, Genre.all, :id, :name) %>
     </div>
@@ -57,3 +54,10 @@
   <button type="button" class="btn btn-secondary btn-sm"> Back</button>	
 <% end %>			
 </div>
+
+<style type="text/css">
+	.form-group select{
+		width: 100%;
+		height: 30px;
+	}
+</style>

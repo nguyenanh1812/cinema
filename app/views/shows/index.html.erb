@@ -1,24 +1,59 @@
 <title>List Show</title>
 <br>
 <h1 style="margin-left: 10px;display: inline;">Danh sách Xuất chiếu</h1> 
-<%= link_to new_show_path do %>
+  <%= link_to new_show_path do %>
     <button style="float:right;margin-right: 30px ;" type="button" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add New Show</button>
   <% end -%>
-<div style="border-bottom: 4px solid black; border-width:80%;">
-</div><br>
-<% @shows.each do |show| %>
-    <div class="movie_poster" style ="border: 1px solid black; margin: 10px; padding: 10px; width: 300px">
-    <li> <strong><%= show.movie.name %></strong></li> 
-    <li><strong>Ngày chiếu: </strong><%= show.date.strftime("%d/%m/%Y") %>   </li>
-    <li><strong>phòng chiếu: </strong><%= show.screen.name %>   </li>  
-    <li><strong>Thời gian bắt đầu: </strong><%= show.start_time %>   </li>
-    <li><strong>Thời gian kết thúc: </strong><%= show.end_time %>   </li>
-    <br>
-    <%= link_to edit_show_path(show) do %>
-        <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i> Edit</button>
-      <% end %> 
-    <%= link_to show, method: :delete, data: { confirm: "You sure?" } do %> 
-    <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
-    <% end %>
-    </div>
-<% end %>
+<div style="border-bottom: 4px solid black; border-width:80%;"></div>
+<br>
+  <span>
+  <div class="input-daterange">
+    <%= search_form_for @q, url: shows_index_path do |f| %>
+      <div class="input-daterange">
+        <div class="col-md-4">
+          <%= f.date_field :date_gteq, placeholder: " Date from(dd-mm-yyyy)", class: "form-control datepicker", id:'start_date', autocomplete: "off"%>
+        </div>
+        <div class="col-md-4 ">
+          <%= f.date_field :date_lteq,  placeholder: " Date to", class: "form-control datepicker", id:'end_date', autocomplete: "off" %>
+        </div>
+      </div>
+      <div class="col-md-2 col-md-offset-1 form-actions">
+        <%= f.submit "Search", class: "btn btn-success" %>
+      </div>
+    <% end %> 
+  </div>
+  </span>
+<div>
+  <% @shows.each do |show| %>
+      <div class="movie_poster2" style ="border: 1px solid black; margin: 10px; padding: 10px; width: 300px">
+      <li><img src="<%= show.movie.image_link %>" alt="Movie Poster" width="500" height="600"></li>
+      <li> <strong><%= show.movie.name %></strong></li> 
+      <li><strong>Ngày chiếu: </strong><%= show.date.strftime("%d/%m/%Y") %>   </li>
+      <li><strong>phòng chiếu: </strong><%= show.screen.name %>   </li>  
+      <li><strong>Thời gian bắt đầu: </strong><%= show.start_time %>   </li>
+      <li><strong>Thời gian kết thúc: </strong><%= show.end_time %>   </li>
+      <br>
+      <%= link_to edit_show_path(show) do %>
+          <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i> Edit</button>
+        <% end %> 
+      <%= link_to show, method: :delete, data: { confirm: "You sure?" } do %> 
+      <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+      <% end %>
+      </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $(document).on('ready', function() {
+    $('.input-daterange').datepicker({
+      format: "dd-mm-yyyy"
+    });
+  });
+  $( ".datepicker" ).change(function() {
+  if($('#end_date').val() < $('#start_date').val() )
+    {
+      alert("Start date must be before end date!");
+      $('#end_date').val($('#start_date').val())
+    }
+  });
+</script>

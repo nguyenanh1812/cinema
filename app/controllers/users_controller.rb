@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   before_action :admin_user, only: %i[index destroy]
   def index
     # @users = User.all
-    @pagy, @users = pagy(User.all, items: 10)
+    @q = User.ransack(params[:q])
+    @pagy, @users = pagy(@q.result(distinct: true), items: 10)
   end
 
   def destroy

@@ -1,22 +1,62 @@
+<title>Quan Ly Ve</title>
+<h1>Quan Ly dat ve</h1>
+<div class="input-daterange">
+  <%= search_form_for @q, url: ticket_list_path do |f| %>
+    <div class="input-daterange">
+      <div class="col-md-4">
+        <%= f.date_field :created_at_gteq, placeholder: " Date from(dd-mm-yyyy)", class: "form-control datepicker", id:'start_date', autocomplete: "off"%>
+      </div>
+      <div class="col-md-4 ">
+        <%= f.date_field :created_at_lteq,  placeholder: " Date to", class: "form-control datepicker", id:'end_date', autocomplete: "off" %>
+      </div>
+    </div>
+    <div class="col-md-2 col-md-offset-1 form-actions">
+      <%= f.submit "Search", class: "btn btn-success" %>
+    </div>
+  <% end %> 
+</div>
+<br><br>
+<hr>
 <table>
     <tr>
-        <th>Mã khách hàng </th>
-        <th>Ngay giao dich </th>    
-        <th>Ma giao dich </th>
-        <th>Phim chieu  </th>
+        <th>
+        <%= sort_link(@q, :id) do %>
+            <strong style="color:black;">Ma giao dich </strong>
+        <% end %>
+        </th>
+        <th>
+        <%= sort_link(@q, :user_id) do %>
+            <strong style="color:black;">Ma khach hang</strong>
+        <% end %> 
+        </th> 
+        <th> 
+        <%= sort_link(@q, :created_at) do %>
+            <strong style="color:black;">Ngay giao dich </strong>
+        <% end %>
+        </th>   
+        <th>Phim chieu </th>
         <th>So luong ghe </th>
-        <th>Tong thanh toan </th>
-        <th>Chi tiet </th>
+        <th>        
+        <%= sort_link(@q, :total_price) do %>
+            <strong style="color:black;">Tong thanh toan</strong>
+        <% end %> 
+         </th>
+        <th>
+        <%= sort_link(@q, :status) do %>
+            <strong style="color:black;">Trang thai</strong>
+        <% end %> </th>
+        <th>Beta CinePlex </th>
     </tr>
+    <% s = 0 %>
     <% @booking_tickets.each do |b| %>
         <tr> 
+            <td>
+                <%= b.id %>   
+            </td>
             <td><%= b.user_id %>
             </td>
             <td>
                 <%= b.created_at.strftime("%d/%m/%Y") %>   
-            </td>
-            <td>
-                <%= b.id %>   
             </td>
             <td>
             <% @shows.each do |show| %>
@@ -27,25 +67,38 @@
                     <% end %>
                 <% end %>
                 <% end %>
-            <% end %>
-                <%= b.show_id %>   
+            <% end %> 
             </td>
             <td>
                 <%= b.seat_quantity %>: <%= b.seats_name %> 
             </td>
             <td>
                 <%= b.total_price %>.000VND  
+                <% s += b.total_price %>
             </td>
             <td>
-            <%= link_to "Xem chi tiet" , show_tickets_path(b.id) ,  class:"btn btn-primary"%>
+                <% if b.status %>
+                    <span>
+                        <button style="width:85px" type="button" class="btn btn-danger btn-sm"><i class="fas fa-times-circle"></i> UnPaid</button>
+                        <button style="width:85px" type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check-circle"></i> Paid</button>
+                    </span>
+                <% else %>
+                    <span>
+                        <button style="width:85px" type="button" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i> UnPaid</button>
+                        <button style="width:85px" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-times-circle"></i> Paid</button>
+                    </span>
+                <% end -%>
+            </td>
+            <td>
+            <%= link_to "Xem chi tiet" , show_tickets_path(b.id) ,  class:"btn btn-primary btn-sm"%>
             <%= link_to delete_ticket_path(b), method: :delete, data: { confirm: "You sure?" } do %> 
                 <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
             <% end %>
             </td>
         </tr>
     <% end %>
-</table>
-
+</table><br><br>
+<center><h3 style="background: #3597c9; color:#E3edf3; display:inline; padding: 30px; margin:50px">Doanh thu: <%= s %>.000VND</h3></center><br>
 <style>
     table {
     font-family: arial, sans-serif;
@@ -62,3 +115,17 @@
     background-color: #dddddd;
     }
 </style>
+<script type="text/javascript">
+  $(document).on('ready', function() {
+    $('.input-daterange').datepicker({
+      format: "dd-mm-yyyy"
+    });
+  });
+  $( ".datepicker" ).change(function() {
+  if($('#end_date').val() < $('#start_date').val() )
+    {
+      alert("Start date must be before end date!");
+      $('#end_date').val($('#start_date').val())
+    }
+  });
+</script>   

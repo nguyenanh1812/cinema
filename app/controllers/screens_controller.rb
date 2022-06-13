@@ -6,8 +6,8 @@ class ScreensController < ApplicationController
     @screen = Screen.find(1)
     @seats = CinenmaSeat.where(screen_id: @screen.id)
     # seat_reserveds = SeatReserved.where(show_id: @show.id)
-    # Tim cinemaSeate ma co trong bang seatReserved voi dieu kien showid
-    seat_reserveds = CinenmaSeat.includes(:seat_reserveds).where(seat_reserveds: { show_id: @show.id })
+    # Tim cinemaSeate ma co trong bang seatReserved voi dieu kien showid va status:true
+    seat_reserveds = CinenmaSeat.includes(:seat_reserveds).where(seat_reserveds: { show_id: @show.id , status: true})
     @seat_reserveds_ids = seat_reserveds.pluck(:id)
   end
 
@@ -16,7 +16,8 @@ class ScreensController < ApplicationController
   end
   
   def index
-    @screens = Screen.all
+    @q = Screen.ransack(params[:q])
+    @screens = @q.result(distinct: true)
   end
 
   def edit

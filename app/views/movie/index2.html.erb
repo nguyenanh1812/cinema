@@ -13,10 +13,8 @@
 <div class="search-wrapper">
     <div class="input-holder">
         <!--<input type="text" class="search-input" placeholder="Type to search" />-->
-        <%= search_form_for @q, url: :movie_index do |f| %>
-          <!--<%= f.label :Movie_Name %>-->
+        <%= search_form_for @q, url: :movie_index2 do |f| %>
           <%= f.search_field :name_cont , class:"search-input", placeholder:"Search by movie name" %>
-          <!-- <%= f.submit %> -->
           <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
         <% end %> 
         

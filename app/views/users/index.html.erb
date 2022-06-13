@@ -1,11 +1,70 @@
-<title>Users</title>
-
-<h1>All users</h1>
-
-<%= pagy_bootstrap_nav(@pagy).html_safe %>
-<ul class="users">
-<% @users.each do |user| %>
-  <%= render user %>
-<% end %>
-</ul>
-<%= pagy_bootstrap_nav(@pagy).html_safe %>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Users</title>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+      }
+  </style>
+</head>
+<body>
+  <h1>Khach Hang</h1>
+  <table>
+    <tr>
+      <th>
+      <%= sort_link(@q, :id) do %>
+          <strong style="color:black;"> Ma Khach Hang</strong>
+      <% end %>
+      </th>
+      <th>
+      <%= sort_link(@q, :name) do %>
+          <strong style="color:black;">Ho Ten</strong>
+      <% end %>
+      </th>
+      <th>Email</th>
+      <th>SDT</th>
+      <th>Ngay Sinh</th>
+      <th>
+        <div style="float:right;margin-right:5%"> 
+          <div class="form-inline my-2 my-lg-0">
+              <%= search_form_for @q, url: users_index_path do |f| %>
+              <%= f.search_field :name_cont, placeholder: "Customer Name ...", class:"search-field form-control"%>
+              <%= f.submit "Search", class: "btn-success btn-sm btn" %>
+            <% end -%>
+            </div>
+        </div>
+      </th>
+    </tr>
+  <% @users.each do |user| %>
+    <!--<%= render user %>-->
+    <tr>
+      <td><%= user.id %> </td>
+      <td><%= link_to user.name, user %> </td>
+      <td>Email: <%= user.email %> </td>
+      <td>SDT: <%= user.phonenum %> </td>
+      <td>BirthDay: <%= user.day %>/  <%= user.month %>/ <%= user.year %> </td>
+      <td>
+          <% if current_user.admin? && !current_user?(user) %>
+            <%= link_to user, method: :delete, data: { confirm: "You sure?" } do %>
+                <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+            <% end %>
+          <% end %>
+      </td>
+    </tr> 
+  <% end %>
+  </table>
+  <%= pagy_bootstrap_nav(@pagy).html_safe %>
+</body>
+</html>

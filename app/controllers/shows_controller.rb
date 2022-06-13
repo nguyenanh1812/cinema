@@ -1,17 +1,23 @@
 class ShowsController < ApplicationController
   before_action :admin_user, only: %i[index destroy edit update create]
   def index
-    @shows = Show.all
+    #@shows = Show.all
     @movie = Movie.all
     @screen = Screen.all
+    @q = Show.ransack(params[:q])
+    @shows = @q.result
   end
 
   def new
     @show = Show.new
+    @movies = Movie.all
+    @screens = Screen .all
   end
 
   def edit
     @show = Show.find(params[:id])
+    @movies = Movie.all
+    @screens = Screen .all
   end
 
   def update
@@ -31,6 +37,8 @@ class ShowsController < ApplicationController
   end
 
   def create
+    @movies = Movie.all
+    @screens = Screen .all
     @show = Show.new
     @show.movie_id = params[:show][:movie_id]
     @show.screen_id = params[:show][:screen_id]
