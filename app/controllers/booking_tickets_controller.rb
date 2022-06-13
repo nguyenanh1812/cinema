@@ -10,6 +10,7 @@ class BookingTicketsController < ApplicationController
     @q = BookingTicket.ransack(params[:q])
     @booking_tickets = @q.result(distinct: true)
     @shows = Show.all
+    @screens = Screen.all
     @movies = Movie.all
     #@users = User.all
   end
@@ -59,6 +60,26 @@ class BookingTicketsController < ApplicationController
     end
   end
 
+  def convert_status
+    booking_ticket = BookingTicket.find(params[:id])
+    
+    s = true
+    if booking_ticket.status == true
+      s = false
+      flash_string = "Xac nhan giao dich thanh toan!"
+    else
+      flash_string = "Chuyen giao dich chua thanh toan!"
+    end
+    if booking_ticket.update(status: s)
+      seat_reserved = SeatReserved.where(booking_ticket_id: booking_ticket.id)
+      seat_reserved.update(status: s)
+      flash[:success] = flash_string
+      redirect_to ticket_list_path
+    else
+      redirect_to root_path
+    end
+  end
+  
   private
 
   def booking_params

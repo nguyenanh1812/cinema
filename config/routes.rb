@@ -59,6 +59,7 @@ Rails.application.routes.draw do
 
   #ticket
   get '/booking_tickets/admin/index2', to: 'booking_tickets#index2', as: 'ticket_list'
+  patch '/booking_tickets/convert_status/:id', to: 'booking_tickets#convert_status', as: 'convert_status'
   delete '/booking_tickets/destroy/:id', to: 'booking_tickets#destroy', as: 'delete_ticket'
 
   #payment-script-DaFail

@@ -28,18 +28,20 @@
     border-radius: 5px;
 }
 .btn-click-show{
-    float:left; 
-    color: honeydew;
-    border: 1px solid rgb(100, 97, 97);
+    display: inline-flex; 
+    border: 3px solid #ff8080;
     margin-left: 10px; 
     border-radius: 20px;
-    background-color: rgb(231, 228, 228);
+    background: linear-gradient(#9a1919, #df3a3a);
     font-size: 15px;
     text-decoration: none;
     :hover{
         text-decoration: none;  
-        color: rgb(255, 29, 29);
+        font-size: 17px;
     }
+}
+.btn-click-show a {
+    color: #ffff;
 }
 #slideshow {
    overflow: hidden;
