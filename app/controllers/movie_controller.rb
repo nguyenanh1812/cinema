@@ -7,7 +7,7 @@ class MovieController < ApplicationController
 
   def destroy
     Movie.find(params[:id]).destroy
-    flash[:success] = "Movie deleted"
+    flash[:success] = "Phim đã được xóa!"
     redirect_to movie_index2_path
   end
 
@@ -29,7 +29,7 @@ class MovieController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
-      flash[:success] = "Update successfully!"
+      flash[:success] = "Cập nhật thành công!"
       redirect_to movie_index2_path
     else
       render 'edit'
@@ -45,7 +45,7 @@ class MovieController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      flash[:success] = "Movie created!"
+      flash[:success] = "Thêm phim mới thành công!"
       redirect_to movie_index2_path
     else
       redirect_to movie_new_path

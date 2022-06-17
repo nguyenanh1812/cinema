@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "Người dùng đã được xóa!"
     redirect_to users_url
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       ExampleMailer.sample_email(@user).deliver
-      flash[:info] = 'Please check your email to activate your account.'
+      flash[:info] = 'Hãy kiểm tra email của bạn để kích hoạt tài khoản của bạn!'
       redirect_to root_url
     else
       render 'new'
@@ -46,14 +46,14 @@ class UsersController < ApplicationController
 
     if @user && user
       if @user.update(edit_user_params)
-        flash[:success] = 'Update successfully!'
+        flash[:success] = 'Cập nhật thành công!'
         redirect_to @user
       else
-        flash[:danger] = 'Something wrong'
+        flash[:danger] = 'Có gì đó không đúng với điều kiện!'
         render 'edit'
       end
     else
-      flash[:danger] = 'Wrong password'
+      flash[:danger] = 'Lỗi mật khẩu!'
       render 'edit'
     end
   end

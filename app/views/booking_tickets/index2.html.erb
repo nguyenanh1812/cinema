@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="col-md-2 col-md-offset-1 form-actions">
-      <%= f.submit "Search", class: "btn btn-success" %>
+      <%= f.submit "Tìm kiếm", class: "btn btn-success" %>
     </div>
   <% end %> 
 </div>
@@ -81,20 +81,20 @@
 				<td>
 					<% if b.status %>
 						<%= link_to convert_status_path(b), method: :patch, data: { confirm: "Đổi trạng thái chưa thanh toán ?" } do %>
-							<button style="width:85px" type="button" class="btn btn-danger btn-sm"><i class="fas fa-times-circle"></i> UnPaid</button>
+							<button style="width:150px" type="button" class="btn btn-danger btn-sm"><i class="fas fa-times-circle"></i> Hủy thanh toán</button><br>
 						<% end -%>
-							<button style="width:85px" type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check-circle"></i> Paid</button>
+							<button style="width:150px" type="button" class="btn btn-success btn-sm" disabled><i class="fas fa-check-circle"></i> Đã thanh toán </button>
 					<% else %>
 						<%= link_to convert_status_path(b), method: :patch, data: { confirm: "Đổi trạng thái thanh toán ?" } do %>
-							<button style="width:85px" type="button" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i> Payment</button>
+							<button style="width:150px" type="button" class="btn btn-success btn-sm"><i class="fas fa-check-circle"></i> Thanh toán</button><br>
 						<% end -%>
-							<button style="width:85px" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-times-circle"></i> UnPaid</button>
+							<button style="width:150px" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-times-circle"></i> Chưa thanh toán</button>
 					<% end -%>
 				</td>
 				<td>
 					<%= link_to "Xem chi tiet" , show_tickets_path(b.id) ,  class:"btn btn-primary btn-sm"%>
 					<%= link_to delete_ticket_path(b), method: :delete, data: { confirm: "Bạn chắc muốn xóa vé chứ?" } do %> 
-							<button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Delete</button>
+							<button type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Xóa</button>
 					<% end %>
 				</td>
       </tr>

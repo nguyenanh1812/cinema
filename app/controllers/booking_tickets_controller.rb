@@ -1,7 +1,9 @@
 class BookingTicketsController < ApplicationController
   before_action :admin_user, only: %i[index2 destroy]
   def index
-    @booking_ticket = BookingTicket.where(user_id: current_user.id)
+    @q = BookingTicket.where(user_id: current_user.id).ransack(params[:q])
+    @booking_ticket = @q.result(distinct: true)
+    #@booking_ticket = BookingTicket.where(user_id: current_user.id)
     @shows = Show.all
     @movies = Movie.all
   end
@@ -17,7 +19,7 @@ class BookingTicketsController < ApplicationController
 
   def destroy
     BookingTicket.find(params[:id]).destroy
-    flash[:success] = "Ticket deleted"
+    flash[:success] = "Đã xóa vé!"
     redirect_to ticket_list_path
   end
 
@@ -66,9 +68,9 @@ class BookingTicketsController < ApplicationController
     s = true
     if booking_ticket.status == true
       s = false
-      flash_string = "Xac nhan giao dich thanh toan!"
+      flash_string = "Xác nhận giao dịch thanh toán!"
     else
-      flash_string = "Chuyen giao dich chua thanh toan!"
+      flash_string = "Chuyển giao dịch chưa thanh toán!"
     end
     if booking_ticket.update(status: s)
       seat_reserved = SeatReserved.where(booking_ticket_id: booking_ticket.id)

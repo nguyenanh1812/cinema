@@ -28,10 +28,10 @@ class ScreensController < ApplicationController
     @screen = Screen.find(params[:id])
     screen_name = params[:screen][:name]
     if @screen.update(name: screen_name)
-      flash[:success] = "Updated Screen" + @screen.name +  "!"
+      flash[:success] = "Cập nhật phòng chiếu " + @screen.name +  "thành công!"
       redirect_to screens_path
     else
-      flash[:danger] = "Fill up name input!"
+      flash[:danger] = "Hãy điền đầy đủ thông tin!"
       render 'edit'
     end
   end
@@ -41,10 +41,10 @@ class ScreensController < ApplicationController
     @screen.name = params[:screen][:name]
     @screen.total_seat = 50
     if @screen.save
-      flash[:success] = "Add new Genre " + @screen.name +  " successfully!"
+      flash[:success] = "Thêm phòng chiếu mới " + @screen.name +  " thành công!"
       redirect_to screens_path
     else
-      flash[:danger] = "Fill up name input!"
+      flash[:danger] = "Hãy điền đầy đủ thông tin !"
       render 'new'
     end
   end
