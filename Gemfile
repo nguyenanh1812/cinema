@@ -21,7 +21,6 @@ gem 'rubocop-rails'
 gem 'dotenv-rails'
 gem 'faker'
 gem 'pagy' # phan trang
-gem 'ransack'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
