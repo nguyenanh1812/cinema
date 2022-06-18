@@ -25,7 +25,7 @@
   </span>
 <div>
   <% @shows.each do |show| %>
-      <div class="movie_poster2" style ="border: 1px solid black; margin: 10px; padding: 10px; width: 300px">
+      <div class="movie_poster2" style ="border: 1px solid black; margin: 10px; padding: 10px; width: 300px; height:350px">
       <li><img src="<%= show.movie.image_link %>" alt="Movie Poster" width="500" height="600"></li>
       <li> <strong><%= show.movie.name %></strong></li> 
       <li><strong>Ngày chiếu: </strong><%= show.date.strftime("%d/%m/%Y") %>   </li>
