@@ -10,7 +10,7 @@ class GenreController < ApplicationController
 
   def destroy
     Genre.find(params[:id]).destroy
-    flash[:success] = "Genre deleted"
+    flash[:success] = "Đã xóa thể loại1"
     redirect_to genre_index_path
   end
 
@@ -22,10 +22,10 @@ class GenreController < ApplicationController
     @genre = Genre.find(params[:id])
     genre_name = params[:genre][:name]
     if @genre.update(name: genre_name)
-      flash[:success] = "Updated Genre" + @genre.name +  "!"
+      flash[:success] = "Cập nhật thể loại " + @genre.name +  " thành công!"
       redirect_to genre_index_path
     else
-      flash[:danger] = "Fill up name input!"
+      flash[:danger] = "Hãy điền vào ô tên!"
       render 'edit'
     end
   end
@@ -34,10 +34,10 @@ class GenreController < ApplicationController
     @genre = Genre.new
     @genre.name = params[:genre][:name]
     if @genre.save
-      flash[:success] = "Add new Genre " + @genre.name +  " successfully!"
+      flash[:success] = "Thêm mới thể loại " + @genre.name +  " thành công!"
       redirect_to genre_index_path
     else
-      flash[:danger] = "Fill up name input!"
+      flash[:danger] = "Điền vào ô tên!"
       render 'new'
     end
   end

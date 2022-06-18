@@ -9,7 +9,7 @@
       <div class="btn-click-show">
       <%= link_to screen_path(show.id, show.screen_id) do %>
         <p style="margin: 15px;"><b><%= show.date.strftime("%d/%m")%><%= ':' + show.start_time + ' - ' %><%= show.end_time%><br><b>
-        <center>Phòng <%= show.screen_id %></center>
+        <center>Phòng <%= show.screen_id %>(xc:<%= show.id %>)</center>
       <% end %>
 
       </div>

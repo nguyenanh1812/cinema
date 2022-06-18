@@ -4,21 +4,11 @@
             <li><a href="#">tuyển dụng</a></li>
             <li><a href="#">Tin mới & Ưu đãi</a></li>
             
-            <% if logged_in? %>    
-                <% if current_user.admin == true %> 
-                    <li><%= link_to "Quan Ly Khach Hang", users_index_path %></li>
-                    <li><%= link_to "Quan Ly Phim", movie_index2_path %></li>
-                    <li><%= link_to "Quan Ly Xuat chieu", shows_index_path %></li>
-                    <li><%= link_to "Quan Ly the loai", genre_index_path %></li>
-                    <li><%= link_to "Quan Ly phong chieu", screens_path %></li>
-                    <li><%= link_to "Quan Ly ve ", ticket_list_path %></li>
-                <% end %>           
+            <% if logged_in? %>            
                 <!--<li><%= link_to "Settings", edit_user_path(current_user) %></li>-->
                 <li><%= link_to "Vé Của Tôi",booking_tickets_index_path %></li>
                 <li><%= link_to "Profile", current_user %></li>
                 <li><%= link_to "thoát", logout_path, method: :delete %></li>
-
-                
 			<% else %>
                 <li><%= link_to "đăng nhập/đăng ký", sessions_new_path %></li>
             <% end %>
@@ -42,7 +32,7 @@
                 </li> 
                 <li style= "margin-top: 40px;">
                     <div class="dropdown">
-                        rạp cgv
+                        rạp Beta
                         <div class="dropdown-content">
                             <a href="#">Tất cả các rạp</a>
                             <a href="#">Rạp đặc biệt</a> 
@@ -91,6 +81,38 @@
         </div>
     </div>
 </div>
+<center>  
+<% if logged_in? && current_user.admin == true %> 
+    <ul class="admin-ui">
+        <li><%= link_to "Quản lý khách hàng", users_index_path %></li>
+        <li><%= link_to "Quản lý Phim", movie_index2_path %></li>
+        <li><%= link_to "Quản lý xuất chiếu", shows_index_path %></li>
+        <li><%= link_to "Quản lý thể loại", genre_index_path %></li>
+        <li><%= link_to "Quản lý phòng chiếu", screens_path %></li>
+        <li><%= link_to "Quản lý vé", ticket_list_path %></li>
+    </ul>
+<% end %>  
+</center>
+
+<style type="text/css">
+    .admin-ui li {
+        display: inline-flex;
+        justify-content: center;
+        background: linear-gradient(#2a7189, #4fabc9);
+        padding: 15px;
+        margin: 5px;
+    }
+    .admin-ui a {
+        color:  #ffffff;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .admin-ui a:hover {
+        text-decoration: none;
+        font-weight: 900;
+        font-size: 17px;
+    }
+</style>
 <script>
 function searchToggle(obj, evt){
     var container = $(obj).closest('.search-wrapper');

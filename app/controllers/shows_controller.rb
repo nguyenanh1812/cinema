@@ -28,10 +28,10 @@ class ShowsController < ApplicationController
     end_time = params[:show][:end_time]
     date = params[:show][:date]
     if @genre.update(movie_id: movie_id, screen_id: screen_id, start_time: start_time, end_time: end_time, date: date)
-      flash[:success] = "Updated show" + @show.movie.name +  "!"
+      flash[:success] = "Đã cập nhật xuất chiếu " + @show.movie.name +  "!"
       redirect_to shows_index_path
     else
-      flash[:danger] = "Fill up the form!"
+      flash[:danger] = "Điền vào biểu mẫu!"
       render 'edit'
     end
   end
@@ -46,17 +46,17 @@ class ShowsController < ApplicationController
     @show.end_time = params[:show][:end_time]
     @show.date = params[:show][:date]
     if @show.save
-      flash[:success] = "Add new Show " + @show.movie.name +  " successfully!"
+      flash[:success] = "Thêm mới xuất chiếu " + @show.movie.name +  " thành công!"
       redirect_to shows_index_path
     else
-      flash[:danger] = "Fill up the form!"
+      flash[:danger] = "Điền vào biểu mẫu!"
       render 'new'
     end
   end
 
   def destroy
     Show.find(params[:id]).destroy
-    flash[:success] = "Show deleted"
+    flash[:success] = "Đã xóa xuất chiếu!"
     redirect_to shows_index_path
   end
 end

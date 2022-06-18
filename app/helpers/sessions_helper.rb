@@ -62,7 +62,7 @@ module SessionsHelper
   #xet xem co phai admin
   def admin_user
     if current_user.admin?
-      flash.now[:success] = "Admin Access Granted"
+      #flash[:success] = "Admin Access Granted"
     else
       redirect_to root_path
     end
