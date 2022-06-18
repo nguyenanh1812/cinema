@@ -54,8 +54,8 @@ class BookingTicketsController < ApplicationController
         @seat_reserved.status = false
         @seat_reserved.save
       end
-      flash[:info] = 'Bạn đã đặt vé thành công!'
-      redirect_to root_url
+      flash[:info] = 'Yêu cầu đặt vé thành công hãy hoàn tất thanh toán để sử dụng dịch vụ!'
+      redirect_to booking_tickets_index_path
     else
       flash[:danger] = 'Lỗi hệ thống, vui lòng quay lại sau!'
       render 'new'
