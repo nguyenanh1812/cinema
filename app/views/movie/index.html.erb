@@ -28,10 +28,19 @@
 <h1>Phim Đang Chiếu</h1>
 <div style="border-bottom: 4px solid black; border-width:80%;">
 </div><br>
+<p style="line-height: 30px; margin:20px; font-weight: 600; font-size: 20px;">
+    <%= sort_link(@q, :name) do %>
+      <span style="margin-left:20px">Tên Phim </span>
+    <% end %>
+    <%= sort_link(@q, :release) do %>
+      <span style="margin-left:20px;">Ngày Khởi chiếu </span>
+    <% end %>
 
+</p>
 <% @movies.each do |movie| %>
     <div class="movie_poster">
-    <img src="<%= movie.image_link %>" class="img-thumbnail" >
+      <%= link_to movie do %>
+    <img src="<%= movie.image_link %>" class="img-thumbnail" ><% end -%>
     <li class="product-name"><%= link_to movie.name, movie %></li>    
     <li><strong>Thời lượng: </strong><%= movie.time %>   </li>
     <li><strong>Khởi chiếu: </strong><%= movie.release %>   </li>
