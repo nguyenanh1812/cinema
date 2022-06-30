@@ -20,6 +20,7 @@ class MovieController < ApplicationController
   def index2
     @q = Movie.ransack(params[:q])
     @pagy, @movies = pagy(@q.result(distinct: true), items: 9)
+    @genres = Genre.all
   end
   
   def edit
@@ -55,6 +56,6 @@ class MovieController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:name, :title, :cast, :time, :description, :release, :image_link, :genre_id)
+    params.require(:movie).permit(:name, :title, :cast, :time, :description, :release, :image_link, :genre_id, :url_trailer)
   end
 end

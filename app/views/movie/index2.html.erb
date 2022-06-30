@@ -28,11 +28,23 @@
   <button style="float:right;margin-right: 30px ;" type="button" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Add New Movie</button>
 <% end -%>
 <div style="border-bottom: 4px solid black; border-width:80%;">
-</div><br>
-
+</div>
+<p style="line-height: 30px; margin:20px; font-weight: 600; font-size: 20px;">
+    <%= sort_link(@q, :name) do %>
+      <span style="margin-left:20px">Tên Phim </span>
+    <% end %>
+    <%= sort_link(@q, :release) do %>
+      <span style="margin-left:20px;">Ngày Khởi chiếu </span>
+    <% end %>
+    <%= sort_link(@q, :created_at) do %>
+      <span style="margin-left:20px;">Ngày tạo </span>
+    <% end %>
+   
+</p>
 <% @movies.each do |movie| %>
     <div class="movie_poster">
-    <img src="<%= movie.image_link %>" class="img-thumbnail" >
+      <%= link_to movie do %>
+    <img src="<%= movie.image_link %>" class="img-thumbnail" ><% end -%>
     <li class="product-name"><%= link_to movie.name, movie %></li>    
     <li><strong>Thời lượng: </strong><%= movie.time %>   </li>
     <li><strong>Khởi chiếu: </strong><%= movie.release %>   </li>
@@ -53,3 +65,4 @@
 <div style="clear:left">
 <%= pagy_bootstrap_nav(@pagy).html_safe %>
 </div>
+
