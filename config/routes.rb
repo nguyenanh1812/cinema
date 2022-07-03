@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   # root 'pages#welcome'
   root 'movie#index'
   resources :users
-  resources :movie
+  resources :movie do
+    member do 
+      get :get_movie_info
+    end
+  end
   resources :booking_tickets
   resources :shows
   resources :account_activations, only: [:edit]

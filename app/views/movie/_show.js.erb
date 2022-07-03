@@ -1,0 +1,35 @@
+function myFunction() {
+  var x = document.getElementById("order");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function trailerFunction(){
+  var x = document.getElementById("trailer")
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+async function getMovieInfo(url = '') {
+  const response = await fetch(url, {
+    method: 'get'
+  });
+  return response.json();
+}
+
+function getMovieLogs(url = '') {
+  $('#details_box').html('Loading..');
+  setTimeout(() => {
+    getMovieInfo(url)
+      .then(data => {
+        console.log(data);
+        $('#details_box').html(data?.movie?.description);
+      });
+  }, 500)
+}

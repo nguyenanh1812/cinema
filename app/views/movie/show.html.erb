@@ -44,6 +44,23 @@ style="border: none; visibility: visible; width: 90px; height: 28px;" ></iframe>
 <button type="button" title="Mua vé" class="button btn-booking" onclick="myFunction()">
 	<span><span>Xem xuất chiếu</span></span>
 </button>
+<div style="
+  margin-top: 20px;
+">
+  <button class="btn btn-primary" onclick="getMovieLogs('<%= get_movie_info_movie_path %>')">Get movie details</button>
+</div>
+<div
+  id="details_box"
+  style="
+    padding: 20px;
+    border: 2px solid #ccc;
+    display: flex;
+    align-self: flex-end;
+    margin-top: 20px;
+  "
+>
+  
+</div>
 <br>
 <!-- <button onclick="window.open('https://www.youtube.com/embed/aWzlQ2N6qqg', 'newwindow', 'width=640,height=320, left=-30,top=-300'); return false;">Trailers</button> -->
 
@@ -61,29 +78,9 @@ style="border: none; visibility: visible; width: 90px; height: 28px;" ></iframe>
     <iframe src="https://www.youtube.com/embed/aWzlQ2N6qqg" title="YouTube video" allowfullscreen></iframe>
   <% end %>
 </div>
-<script>
-function myFunction() {
-  var x = document.getElementById("order");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-
-function trailerFunction(){
-  var x = document.getElementById("trailer")
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-</script>
-
 <p style="clear:left; float:right;">
   <%= link_to 'Quay lại', movie_index_path %>
 <p>
-
-
-				
+<script>
+  <%= render "show.js.erb" %>
+</script>
