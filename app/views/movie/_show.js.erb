@@ -16,20 +16,21 @@ function trailerFunction(){
   }
 }
 
-async function getMovieInfo(url = '') {
-  const response = await fetch(url, {
-    method: 'get'
-  });
-  return response.json();
-}
-
-function getMovieLogs(url = '') {
+function getMovieInfo(url = '') {
   $('#details_box').html('Loading..');
-  setTimeout(() => {
-    getMovieInfo(url)
-      .then(data => {
-        console.log(data);
+  $.ajax({
+    type: "get",
+    url: url,
+    dataType: "json",
+    success: function(data){
+      setTimeout(() => {
         $('#details_box').html(data?.movie?.description);
-      });
-  }, 500)
+      }, 500);
+    },
+    error: function(error){
+      setTimeout(() => {
+        $('#details_box').html('Error: ' + error.statusText);
+      }, 500);
+    }
+  });
 }

@@ -1,6 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+a:hover {
+    text-decoration: none;
+}
 //header css
 .header {
     text-transform: uppercase;
@@ -19,10 +22,28 @@
             margin-left: 20px;
             margin-top: 5px;
         }
-        a{
+        a {
             color: gray;
         }
     }
+}
+.admin-ui li {
+    display: inline-flex;
+    justify-content: center;
+    background: rgba(34, 166, 179, .8);
+    margin: 5px;
+    transition: 0.2s;
+    border-radius: 4px
+}
+.admin-ui a {
+    color:  #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 15px;
+}
+.admin-ui li:hover {
+    transform: scale(1.2);
+    background: rgba(34, 166, 179, 1);
 }
 #VNese, #EN{ 
     color: white;

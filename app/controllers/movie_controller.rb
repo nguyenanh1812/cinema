@@ -44,11 +44,9 @@ class MovieController < ApplicationController
   end
 
   def get_movie_info
-    @movie = Movie.find(params[:id])
-    @genre = Genre.where(id: @movie.genre_id)
-    @shows = Show.where(movie_id: @movie.id)
+    movie = Movie.find(params[:id])
 
-    render :json => { movie: @movie, genre: @genre, shows: @shows }
+    render :json => { movie: movie }
   end
 
   def create
