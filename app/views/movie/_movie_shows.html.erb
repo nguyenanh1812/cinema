@@ -1,0 +1,14 @@
+<div class="date-wrapper">
+	<% @shows.pluck(:movie_id, :date).uniq.each do |movie_id, date| %>
+		<div
+			class="date"
+			onclick="getShowsByDate(this)"
+			data-date="<%= date %>"
+			data-movie_id="<%= movie_id %>"
+		>
+			<%= date.strftime("%d/%m") %>
+		</div>
+	<% end -%>
+</div>
+<div class="room-wrapper">
+</div>

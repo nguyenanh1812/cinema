@@ -1,0 +1,17 @@
+<% @screens.each do |screen|%>
+  <h4>
+    <%= screen.split('-').last %>
+  </h4>
+  <div class="showtime_selection">
+    <% @shows.each do |show|%>
+      <% if show.screen_id == screen.split('-').first.to_i %>
+        <div
+          class="showtime_selection-item"
+          onclick="selectTab(this);screenSelectHandler('<%= screen_path(show.id, show.screen_id) %>')"
+        >
+          <%= show.start_time %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

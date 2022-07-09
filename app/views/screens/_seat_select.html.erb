@@ -1,0 +1,45 @@
+<table class="seat_selection">
+  <tr>
+    <td></td>
+    <% @seats.maximum(:seat_number).times do |seat_index| %>
+    <td>
+      <span>
+        <%= seat_index + 1 %>
+      </span>
+    </td>
+    <% end %>
+  </tr>
+  <% @seats.maximum(:row).times do |row_index| %>
+  <tr>
+    <td>
+      <span><%= (row_index + 65).chr %></span>
+    </td>
+    <% @seats.maximum(:seat_number).times do |seat_index| %>
+    <td class="seat_selection-option">
+      <span
+        onclick="handleSelectSeat(this)"
+        data-seat_label='<%= "#{(row_index + 65).chr}#{seat_index + 1}" %>'
+      >
+        <%= "#{(row_index + 65).chr}#{seat_index + 1}" %>
+      </span>
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+<div class="selected_seats">
+</div>
+<script>
+  const handleSelectSeat = (node) => {
+    var selectedSeats = [];
+    node.classList.value == 'selected'
+    ? $(node).removeClass('selected')
+    : $(node).addClass('selected');
+
+    // selectedSeats.push($(node).data('seat_label'));
+    $('span.selected').map(span => {
+      selectedSeats.push($('span.selected')[span].innerText);
+    });
+    $('.selected_seats').html(selectedSeats.join(', '));
+  }
+</script>

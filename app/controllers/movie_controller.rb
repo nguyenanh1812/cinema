@@ -39,14 +39,33 @@ class MovieController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @genre = Genre.where(id: @movie.genre_id)
     @shows = Show.where(movie_id: @movie.id)
+  end
+
+  def get_movie_shows
+    shows = Show.where(movie_id: params[:movie_id])
+
+    render :json => { shows: shows }
   end
 
   def get_movie_info
     movie = Movie.find(params[:id])
 
     render :json => { movie: movie }
+  end
+
+  def get_show_by_date
+    date = params[:date]
+    movie_id = params[:id].to_i
+    @shows = Show.where(movie_id: movie_id, date: date)
+    @screens = @shows.pluck(:screen_id).uniq.map do |screen_id|
+      "#{screen_id}-#{Screen.find(screen_id).name}"
+    end
+    # render json: { shows: shows, screens: screens }
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create

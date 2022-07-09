@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :movie do
     member do 
       get :get_movie_info
+      get :get_show_by_date
     end
   end
   resources :booking_tickets

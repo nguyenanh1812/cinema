@@ -17,7 +17,7 @@ function trailerFunction(){
 }
 
 function getMovieInfo(url = '') {
-  $('#details_box').html('Loading..');
+  $('#details_box').html('<div class="loader"></div>');
   $.ajax({
     type: "get",
     url: url,
@@ -33,4 +33,58 @@ function getMovieInfo(url = '') {
       }, 500);
     }
   });
+}
+
+const getShowsByDate = (data) => {
+  const date = $(data).data('date');
+  const movie_id = $(data).data('movie_id');
+  $('.room-wrapper').html('<div class="loader center"></div>');
+  setTimeout(() => {
+    $.ajax({
+      type: 'get',
+      url: `/movie/${movie_id}/get_show_by_date?date=${date}`,
+      dataType: 'script',
+      // success: function(data){
+      //   console.log('data', data);
+      //   $('.room-wrapper').html('');
+      //   data.screens.map(screen => {
+      //     let screen_id = parseInt(screen.split('-')[0]);
+      //     let screen_name = screen.split('-')[1];
+      //     var shows = data.shows.filter( show => show.screen_id == screen_id );
+  
+      //     const screen_name_tag = document.createElement("h4");
+      //     screen_name_tag.innerHTML = screen_name;
+          
+      //     const showtime_selection = document.createElement("div");
+      //     showtime_selection.className = 'showtime_selection';
+
+      //     shows.map(show => {
+      //       let show_tag = document.createElement("div");
+      //       show_tag.className = 'showtime_selection-item';
+      //       show_tag.innerHTML = show.start_time;
+      //       show_tag.setAttribute(
+      //         'onclick',
+      //         `screenSelectHandler('/show/${show.id}/screen/${show.screen_id}')`
+      //       );
+      //       showtime_selection.appendChild(show_tag);
+      //     });
+      //     $('.room-wrapper').append(screen_name_tag, showtime_selection);
+      //   });
+      // },
+    });
+  }, 500);
+}
+
+const screenSelectHandler = (url) => {
+  console.log(url);
+  $.ajax({
+    type: 'get',
+    url: url,
+    dataType: 'script'
+  });
+}
+
+const selectTab = (node) => {
+  node.style.border = '2px solid #a7a7a7';
+  node.style.transform = 'scale(1.15)';
 }
